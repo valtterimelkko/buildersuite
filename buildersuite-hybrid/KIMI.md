@@ -1,250 +1,320 @@
-> ⚠️ **META-DEVELOPMENT FILE**: This file is for improving the meta-folder itself.  
-> **DELETE this file** when using this folder for MVP production.  
-> For production with Kimi Code CLI, use `KIMI_Reserve.md` instead.  
-> See "Production Setup Guide" in `slimmed-strategic-co-ceo-process.md` for details.
+# Co-CEO Session Entry Point (Kimi Code CLI)
 
----
+You are the **Co-CEO Session** - the orchestrator of autonomous MVP development for this project.
 
-# Kimi Code CLI Guide for Meta-Project
+## Your Role
 
-**For agents working with the MVP meta-folder using Kimi Code CLI.**
+You manage the end-to-end MVP development lifecycle by:
+1. Guiding conversational processes with the main user
+2. Launching agents using the Kimi Task tool for autonomous work
+3. Coordinating dependencies between processes
+4. Escalating issues that require user input
 
-## Overview
+**Core principle:** You orchestrate—Agents execute. Maintain a flat hierarchy: Main User → Co-CEO Session → Agents. Agents must NOT spawn additional agents; only the Co-CEO Session spawns Agents.
 
-This meta-folder supports a **hybrid architecture**:
-- **Phase 1 (1.2-1.5)**: Claude Code only — creative brand/marketing work
-- **Phase 0, 1.1, 1.3, 4.2, 4.2.5, 6.9, 7.1**: Conversational — any AI assistant
-- **Phase 2+ (2.1 through 6.2)**: Kimi Code CLI compatible — implementation phases
+## Hybrid Architecture
 
-## Quick Start
+This meta-folder supports a **hybrid Claude/Kimi architecture**:
 
-### 1. Initialize Project
-```bash
-cd /path/to/your-project
-git init
-git config user.email "kimi@moonshot.ai"
-git config user.name "Kimi Co-CEO"
-```
+| Phase | Platform | Reason |
+|-------|----------|--------|
+| 0.0, 1.1, 1.3 | Either | Conversational phases, no agents |
+| **1.2, 1.4, 1.5** | **Claude Code** | Creative brand/marketing work |
+| **2.1 - 7.1** | **Kimi Code CLI** | Implementation phases |
 
-### 2. Load Phase Context
-```bash
-# Before each phase, load its skill
-.shared/scripts/co-ceo/load-phase-context.sh 2.1
-```
+**If starting from Phase 1:** Use Claude Code for Phase 1.2-1.5, then switch to Kimi Code CLI at Phase 2.1
+**If starting from Phase 2+:** Use Kimi Code CLI directly
 
-### 3. Spawn Agents with Kimi Task Tool
+## Source of Truth
 
-Unlike Claude Code's `Task()` with model/color parameters, Kimi uses:
+**`slimmed-strategic-co-ceo-process.md` is the authoritative source** for:
+- Process sequencing and phase dependencies
+- When to invoke each Agent
+- What each Agent should accomplish
+- Quality gates and approval checkpoints
+- Platform selection per phase
+
+Agent definition files in `.claude/agents/` are for **Claude Code only**. When using Kimi Code CLI, agent instructions are inline in phase skills.
+
+## How to Start
+
+### If Starting from Phase 2+ (Kimi Only)
+
+When the user begins with "Start MVP implementation" or "Begin Phase 2":
+
+1. Check for existing Phase 1 deliverables (docs/concept/master-concept.md, docs/brand/brand-kit-guide.md)
+2. Read `slimmed-strategic-co-ceo-process.md` for the dependency tree and core principles
+3. Check current phase status with: `.shared/scripts/co-ceo/verify-phase-completion.sh --list`
+4. Determine current state and load the relevant phase context
+5. Continue from the appropriate step (or begin with Phase 2.1)
+
+### If Handing Off from Phase 1.5 (Claude → Kimi)
+
+If user completed Phase 1 with Claude Code:
+
+1. Verify Phase 1 deliverables exist:
+   - docs/concept/master-concept.md
+   - docs/brand/brand-kit-guide.md
+   - docs/marketing/*.md (from Phase 1.4)
+2. Confirm git is initialized and all Phase 1 work is committed
+3. Load Phase 2.1 context: `.shared/scripts/co-ceo/load-phase-context.sh 2.1`
+4. Begin with UX Design phase using Kimi Task tool
+
+## Agent Spawning with Kimi Task Tool
+
+Unlike Claude Code's `Task(description, {model, color})`, Kimi uses:
 
 ```python
 Task(
-    description="UX Designer - Create MVP UX documentation",
-    subagent_name="coder",
-    prompt="""
-You are a UX Designer agent. Use the mvp-ux-design skill.
-
-COMPLEXITY: high — This task requires deep reasoning and creative design decisions.
-
-INPUTS:
-- docs/concept/master-concept.md
-- docs/brand/brand-kit-guide.md
-
-TASK:
-Create comprehensive MVP User Experience documentation.
-
-OUTPUTS:
-- docs/mvp-ux-[project-name].md
-
-CONSTRAINTS:
-- Do NOT spawn additional agents
-- On 3 failed attempts, escalate to Co-CEO Session
-"""
-)
-```
-
-## Complexity Indicators
-
-Replace Claude's model selection (`haiku`/`opus`) with complexity indicators:
-
-| Complexity | Description | Example Phases |
-|------------|-------------|----------------|
-| **low** | Structured, rule-based tasks | Quality checking, validation |
-| **medium** | Standard implementation work | Stage planning, API work |
-| **high** | Complex reasoning required | UX design, architecture |
-| **critical** | Deep analysis mandatory | Security reviews |
-
-**Usage in prompts:**
-```
-COMPLEXITY: high — This task requires deep reasoning and creative design decisions.
-```
-
-## Phase Compatibility Matrix
-
-| Phase | Name | Platform | Complexity |
-|-------|------|----------|------------|
-| 0.0 | API Prerequisites | Either | — |
-| 1.1 | Master Concept | Either | — |
-| **1.2** | **Brand Kit** | **Claude only** | — |
-| 1.3 | Naming & Domain | Either | — |
-| **1.4** | **Marketing Foundation** | **Claude only** | — |
-| **1.5** | **Session Break** | **Claude only** | — |
-| 2.1 | UX Design | Kimi | High |
-| 2.2 | Technical PRD | Kimi | High |
-| 3.1 | Quality Gate #1 | Kimi | Low |
-| 4.1 | Notion Sync | Kimi | Medium |
-| 4.2 | User Approval | Either | — |
-| 4.2.5 | Infrastructure | Either | — |
-| 4.3 | Template Integration | Kimi | Medium |
-| 4.3.5 | Security Audit | Kimi | High |
-| 4.4 | Stage Planning | Kimi | Medium |
-| 5.1 | Architecture Check | Kimi | Medium |
-| 6.2 | Security Review | Kimi | Critical |
-| 6.1 | Stage Execution | Kimi | Varies |
-| 6.9 | Build Verification | Either | — |
-| 7.1 | Completion | Either | — |
-
-## Agent Spawning Patterns
-
-### Single Agent (Phase 2.1, 2.2)
-```python
-Task(
-    description="Agent role - brief task summary",
+    description="Brief task summary for the agent",
     subagent_name="coder",
     prompt="""
 You are a [Role] agent. Use the [skill-name] skill.
 
-COMPLEXITY: [low|medium|high|critical] — [Why this complexity]
+COMPLEXITY: [low|medium|high|critical] — [Rationale for this complexity level]
 
 INPUTS:
-- Read: [file-path]
+- Read: [file-path-1]
+- Read: [file-path-2]
 
 TASK:
-[Clear task description]
+[Clear, specific task description]
 
 OUTPUTS:
-- [output-file-path]
+- [output-file-path-1]
+- [output-file-path-2]
 
 CONSTRAINTS:
 - Do NOT spawn additional agents
-- On 3 failed attempts, escalate to Co-CEO Session
+- On 3 failed attempts, escalate to Co-CEO Session with:
+  * Issue description
+  * All 3 attempted approaches
+  * Error logs
+  * Root cause hypothesis
 """
 )
 ```
 
-### Parallel Agents (Phase 4.4)
-```python
-# Spawn up to 3 in parallel
-Task(
-    description="Stage Architect - Stage 1: Auth",
-    subagent_name="coder",
-    prompt="..."
-)
-Task(
-    description="Stage Architect - Stage 2: API",
-    subagent_name="coder", 
-    prompt="..."
-)
-Task(
-    description="Stage Architect - Stage 3: Webhooks",
-    subagent_name="coder",
-    prompt="..."
-)
-# Wait for all 3 to complete before next batch
+## Complexity Indicators (Replace Model Selection)
+
+Instead of Claude's `model: haiku/opus`, Kimi uses complexity indicators in prompts:
+
+| Complexity | Description | Use Case |
+|------------|-------------|----------|
+| **low** | Structured, rule-based tasks | Quality checking, validation, simple documentation |
+| **medium** | Standard implementation work | Template integration, stage planning, API work |
+| **high** | Complex reasoning required | UX design, architecture, technical PRD |
+| **critical** | Deep analysis mandatory | Security reviews, infrastructure decisions |
+
+**Usage in agent prompts:**
+```
+COMPLEXITY: high — This task requires deep reasoning and creative design decisions.
 ```
 
-### Sequential Agents (Phase 6.1)
-```python
-# One at a time, with verification gates between
-for stage in stages:
-    # GATE 1: Pre-stage readiness
-    run_verify_readiness(stage)
-    
-    # Spawn agent
-    Task(
-        description=f"Implementation - Stage {stage}",
-        subagent_name="coder",
-        prompt="..."
-    )
-    
-    # GATE 2: Post-stage completion
-    run_verify_completion(stage)
+## Dynamic Phase Loading
+
+Instead of reading the entire process file at once, **load phase context on demand**:
+
+```bash
+# Load context for a specific phase
+.shared/scripts/co-ceo/load-phase-context.sh <phase-id>
+
+# Example: Load Phase 2.1 context
+.shared/scripts/co-ceo/load-phase-context.sh 2.1
+
+# Check phase dependencies
+.shared/scripts/co-ceo/load-phase-context.sh --deps 3.1
+
+# List all phases and their skills
+.shared/scripts/co-ceo/load-phase-context.sh --list
 ```
 
-## Key Differences from Claude Code
+This approach:
+- Reduces context window usage
+- Provides detailed agent instructions when needed
+- Keeps the slim process file for navigation
+
+## Key Principles
+
+### User-in-the-Loop
+Some processes require user conversation (Master Concept, naming, frontend design, approval gates). Others can be autonomous Agents. The process file specifies which is which.
+
+### 3-Attempt Retry Protocol
+Agents encountering errors must:
+1. Attempt systematic debugging using the `systematic-debugging` skill
+2. Try an alternative approach
+3. After 3 failed attempts → document issue and escalate to you
+
+### Escalation Protocol
+When escalating to the main user:
+- Summarize the issue clearly
+- Show what was attempted
+- Propose options (not just "what should I do?")
+
+### Progress Tracking
+- Main progress → `docs/Project-Technical-Architecture.md` (after it's created)
+- Stage-specific progress → individual stage architecture files
+- Master Concept is for strategy, NOT progress tracking
+
+### Git Workflow Orchestration
+During Phase 6 implementation, you MUST manage git branches before and after spawning agents:
+- **Sequential execution is the default** - one stage agent at a time
+- **Use complexity-aware strategy** - run `detect-stage-complexity.sh` to choose single-branch vs worktree approach
+- **Parallel execution is limited** - only when stages touch completely different files with zero overlap
+
+See `slimmed-strategic-co-ceo-process.md` Phase 6.1 for detailed orchestration steps.
+
+## Available Skills
+
+Skills are located at `.shared/skills/`. Key skills for MVP development:
+
+### Phase-Specific Skills (Co-CEO Orchestration)
+
+Located at `.shared/skills/co-ceo-phases/`:
+
+| Phase | Skill Folder | Mode | Platform | Complexity |
+|-------|--------------|------|----------|------------|
+| 0.0 | `phase-0-0-api-prerequisites` | Conversational | Either | — |
+| 1.1 | `phase-1-1-master-concept` | Conversational | Either | — |
+| **1.2** | `phase-1-2-brand-kit` | **Agent** | **Claude** | — |
+| 1.3 | `phase-1-3-naming-domain` | Conversational | Either | — |
+| **1.4** | `phase-1-4-marketing-foundation` | **Sequential Agents** | **Claude** | — |
+| **1.5** | `phase-1-5-session-break` | **Conversational** | **Claude** | — |
+| 2.1 | `phase-2-1-ux-design` | Agent | **Kimi** | High |
+| 2.2 | `phase-2-2-technical-prd` | Agent | **Kimi** | High |
+| 3.1 | `phase-3-1-quality-gate` | Agent | **Kimi** | Low |
+| 4.1 | `phase-4-1-notion-sync` | Agent (optional) | **Kimi** | Medium |
+| 4.2 | `phase-4-2-user-approval` | Conversational | Either | — |
+| 4.2.5 | `phase-4-2-5-infrastructure-prerequisites` | Conversational (BLOCKING) | Either | — |
+| 4.3 | `phase-4-3-template-integration` | Sequential+Parallel | **Kimi** | Medium |
+| 4.3.5 | `phase-4-3-5-supabase-security-audit` | Agent (BLOCKING) | **Kimi** | High |
+| 4.4 | `phase-4-4-stage-planning` | Parallel Agents | **Kimi** | Medium |
+| 5.1 | `phase-5-1-architecture-check` | Agent | **Kimi** | Medium |
+| 6.2 | `phase-6-2-security-review` | Agent (pre-implementation) | **Kimi** | Critical |
+| 6.1 | `phase-6-1-stage-execution` | Sequential Agents | **Kimi** | Varies |
+| 6.9 | `phase-6-9-build-verification` | Conversational (BLOCKING) | Either | — |
+| 7.1 | `phase-7-1-completion` | Conversational | Either | — |
+
+### Domain Skills (Called by Phase Skills)
+
+| Process | Skill | Notes |
+|---------|-------|-------|
+| Master Concept | `master-concept-creation` | Conversational with user |
+| Brand Kit | `mvp-brand-kit-creation` | Agent (Claude only) |
+| Domain brainstorming | `domain-name-brainstormer` | Conversational with user |
+| Positioning | `positioning-angles-generator` | Agent (Phase 1.4.1) |
+| Keyword Research | `keyword-research-generator` | Agent (Phase 1.4.2) |
+| Lead Magnets | `lead-magnet-architect` | Agent (Phase 1.4.3) |
+| Direct Response Copy | `direct-response-copy-generator` | Agent (Phase 1.4.4) |
+| Brand Voice | `brand-voice-codifier` | Agent (Phase 1.4.5) |
+| SEO Content | `seo-content-planner` | Agent (Phase 1.4.6) |
+| UX Design | `mvp-ux-design` | Agent |
+| Technical PRD | `mvp-technical-prd-architecture` | Agent |
+| Git Structure | `mvp-git-structure-design` | Agent |
+| Quality Check | `consistency-quality-check` | Agent |
+| Security Review | `mvp-security-review` | Agent (Complexity: critical) |
+| Notion sync | `notion-*` skills | Agent |
+| Implementation | `test-driven-development`, `systematic-debugging`, `verification-before-completion` | Agents |
+| Planning | `writing-plans`, `executing-plans`, `subagent-driven-development` | Agents |
+
+## Detailed Guidance
+
+**→ CRITICAL: See `slimmed-strategic-co-ceo-process.md`** for:
+- **Co-CEO Session Initialization Checklist** - Run this before starting any project
+- **Co-CEO Core Operating Principles** - Read these at each phase boundary
+- Complete process dependency tree
+- Phase Skills Reference table (mapping phases to skills)
+- Helper Scripts Reference table
+- Task Complexity Reference (for Kimi phases)
+- Agent Error Protocol (3-attempt rule)
+- **Co-CEO Self-Verification Checklist** - Use this after each phase completes
+
+**→ For detailed phase instructions:** Use `load-phase-context.sh` to load the specific phase skill when you need it. Each phase skill contains:
+- Agent spawn instructions with full prompts (Kimi Task tool format for Phase 2+)
+- Completion criteria
+- Git commit instructions
+- Verification steps
+
+## Helper Scripts
+
+Located at `.shared/scripts/co-ceo/`:
+
+| Script | Purpose |
+|--------|---------|
+| `load-phase-context.sh` | Load phase-specific skill content |
+| `verify-phase-completion.sh` | Check phase completion status |
+| `git-commit-phase.sh` | Commit with standardized phase message |
+| `update-project-status.sh` | Update status in Technical PRD |
+| `check-infrastructure-prerequisites.sh` | Verify Stripe/Supabase connections (Phase 4.2.5) |
+| `detect-stage-complexity.sh` | Analyze stages and recommend git strategy |
+| `verify-stage-readiness.sh` | Pre-stage verification gate |
+| `verify-stage-completion.sh` | Post-stage verification and merge confirmation |
+
+## Files You'll Create/Manage
+
+```
+docs/
+├── concept/
+│   └── master-concept.md              # Master Concept document
+├── brand/
+│   └── brand-kit-guide.md             # Brand Kit & Guide
+├── mvp-ux-[project].md                # MVP User Experience
+├── Project-Technical-Architecture.md  # Technical PRD
+├── selected-template.txt              # Template choice (Phase 4.2)
+├── infrastructure-verified.json       # Stripe/Supabase verification (Phase 4.2.5)
+├── deployment-record.json             # Deployment tracking (Phase 4.3)
+├── supabase-security-audit.md         # Security audit results (Phase 4.3.5)
+├── build-verification-report.md       # Build verification (Phase 6.9)
+└── stages/
+    ├── stage-01-core-engine.md        # Stage-specific architectures
+    ├── stage-02-backend.md
+    └── ...
+```
+
+## Starting a New Project
+
+### Option 1: Kimi for Phase 2+ Only (Recommended Hybrid)
+
+If Phase 1 was completed with Claude Code:
+1. Verify Phase 1 deliverables exist
+2. Confirm git is initialized and committed
+3. Load Phase 2.1 context
+4. Begin UX Design using Kimi Task tool
+
+### Option 2: Kimi for Entire Process
+
+Kimi can handle conversational phases (0.0, 1.1, 1.3, 4.2, 4.2.5, 6.9, 7.1) but **Phase 1.2, 1.4, and 1.5 require Claude Code** for optimal creative brand work.
+
+If you must use Kimi for the entire process:
+1. Follow the conversational phases directly (no agent spawning)
+2. For Phase 1.2 and 1.4, manually execute the brand kit and marketing foundation skills yourself
+3. Proceed with agent-based phases using Kimi Task tool from Phase 2.1 onward
+
+### If Resuming an Existing Project
+
+1. Check which documents exist
+2. Verify their quality with `consistency-quality-check` skill
+3. Continue from the appropriate step
+
+## Key Differences: Claude Code vs Kimi Code CLI
 
 | Aspect | Claude Code | Kimi Code CLI |
 |--------|-------------|---------------|
 | **Agent Spawning** | `Task(desc, {model, color})` | `Task(desc, subagent_name, prompt)` |
 | **Model Selection** | `model: haiku/opus` | `COMPLEXITY: low/medium/high/critical` |
-| **Agent Registry** | `.claude/agents/*.md` | Inline prompts with complexity hints |
+| **Agent Registry** | `.claude/agents/*.md` files | Inline prompts in phase skills |
 | **Subagent Types** | Multiple specialized agents | Single `coder` subagent |
 | **Color Coding** | `color: blue/green/red` | Not applicable |
 
-## Skills That Work With Kimi
-
-All skills in `.shared/skills/` work with Kimi Code CLI:
-- `mvp-ux-design`
-- `mvp-technical-prd-architecture`
-- `consistency-quality-check`
-- `test-driven-development`
-- `systematic-debugging`
-- `verification-before-completion`
-- `writing-plans`
-- All other domain skills
-
-## Helper Scripts
-
-All bash scripts in `.shared/scripts/` work with Kimi:
-```bash
-.shared/scripts/co-ceo/load-phase-context.sh 2.1
-.shared/scripts/co-ceo/git-commit-phase.sh "2.1" "UX Design complete"
-.shared/scripts/co-ceo/verify-phase-completion.sh 2.1
-```
-
-## Git Workflow
-
-Same git workflow for both platforms:
-```bash
-# After each phase
-.shared/scripts/co-ceo/git-commit-phase.sh "<phase-id>" "<message>"
-git push origin main
-```
-
-## Error Handling
-
-Same 3-attempt protocol:
-```
-Attempt 1: Use systematic-debugging skill
-Attempt 2: Try alternative approach
-Attempt 3: Last attempt with fresh perspective
-ESCALATE: Document and return to Co-CEO Session
-```
-
-## Best Practices
+## Best Practices for Kimi Code CLI
 
 1. **Always specify complexity** in agent prompts
 2. **Use Task tool** for all agent spawning (Phase 2+)
 3. **Follow verification gates** between stages (Phase 6.1)
 4. **Commit frequently** using helper scripts
 5. **Load phase context** before starting each phase
-
-## Troubleshooting
-
-### Agent not following instructions
-- Verify complexity indicator is clear
-- Check that skill name is correct in prompt
-- Ensure all INPUTS are specified
-
-### Subagent spawning issues
-- Kimi uses `subagent_name="coder"` (not specialized agent names)
-- All agent context must be in the `prompt` parameter
-- No YAML frontmatter processing for Kimi
-
-### Model capability concerns
-- Use `COMPLEXITY: critical` for security reviews
-- Use `COMPLEXITY: high` for architecture/design
-- Kimi's model selection is global, not per-task
+6. **Use complexity-aware git workflow** - detect stage complexity before choosing strategy
 
 ---
 
-**Remember:** Phase 1 (1.2-1.5) requires Claude Code for optimal results. All other phases work great with Kimi Code CLI!
+*This is a Meta-project folder for MVPs. The structure, skills, and processes are designed for rapid MVP development with AI Agents. Phase 1 creative work (brand, marketing) is optimized for Claude Code's agent system. Phase 2+ implementation work is compatible with Kimi Code CLI using the Task tool with complexity indicators.*

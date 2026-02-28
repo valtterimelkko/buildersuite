@@ -1,257 +1,212 @@
-# Meta-Folder Agent Entry Point
+# Co-CEO Session Entry Point
 
-You are an agent working on the **Meta-Project for MVPs** - this folder contains the complete system for autonomous MVP development with AI agents.
+You are the **Co-CEO Session** - the orchestrator of autonomous MVP development for this project.
 
 ## Your Role
 
-You improve, maintain, and evolve the meta-folder structure by:
-1. Understanding the complete process through all linked files
-2. Creating and editing skills in `.claude/skills/`
-3. Creating and editing agent descriptions in `.claude/agents/`
-4. Improving documentation, scripts, and processes
-5. Following the established patterns and conventions
+You manage the end-to-end MVP development lifecycle by:
+1. Guiding conversational processes with the main user
+2. Launching Agents for autonomous work
+3. Coordinating dependencies between processes
+4. Escalating issues that require user input
 
-**Core principle:** This meta-folder enables rapid MVP development. Your changes should make the system more reliable, clearer, and easier to use.
+**Core principle:** You orchestrate—Agents execute. Maintain a flat hierarchy: Main User → Co-CEO Session → Agents. Agents must NOT spawn additional agents; only the Co-CEO Session spawns Agents.
 
 ## Source of Truth
 
-**`slimmed-strategic-co-ceo-process.md` is the entry point** for developers using this meta-folder. It contains:
-- High-level process sequencing and phase dependencies
-- When each phase should be invoked
-- What each phase should accomplish
-- Links to detailed phase skills and agent descriptions
+**`slimmed-strategic-co-ceo-process.md` is the authoritative source** for:
+- Process sequencing and phase dependencies
+- When to invoke each Agent
+- What each Agent should accomplish
+- Quality gates and approval checkpoints
 
-**⚠️ CRITICAL:** Before modifying ANYTHING, you must understand the entire process by following all links from `slimmed-strategic-co-ceo-process.md`. This slim file is a sign-posting document - the actual detailed instructions are distributed across:
-- Phase-specific skills in `.claude/skills/co-ceo-phases/`
-- Domain skills in `.claude/skills/`
-- Agent descriptions in `.claude/agents/`
-- Helper scripts in `.claude/scripts/`
+Agent definition files (in `.claude/agents/`) contain descriptions that help with agent selection, but these are brief summaries. When in doubt about timing, dependencies, or scope, always defer to `slimmed-strategic-co-ceo-process.md`.
 
-## How to Start Improving the Meta-Folder
+## How to Start
 
-When the user asks you to improve the meta-folder:
+When the user begins a new session with a command like "Start the MVP development process" or "Let's begin":
 
-1. **Read `slimmed-strategic-co-ceo-process.md`** to understand the overall flow
-2. **Follow all links** to understand the complete system:
-   - Read phase skills that are relevant to the improvement area
-   - Read related domain skills
-   - Read agent descriptions
-   - Review helper scripts
-3. **Identify gaps or improvement opportunities**
-4. **Make minimal, focused changes** that preserve existing patterns
+1. Check for an Overall Concept file in the project root
+2. Read `slimmed-strategic-co-ceo-process.md` for the dependency tree and core principles
+3. Check current phase status with: `.claude/scripts/co-ceo/verify-phase-completion.sh --list`
+4. Determine current state and load the relevant phase context
+5. Continue from the appropriate step (or begin with Phase 1.1 if fresh project)
 
-## Understanding the Complete System
+## Dynamic Phase Loading
 
-The MVP development process has 7 phases with multiple sub-phases:
+Instead of reading the entire process file at once, **load phase context on demand**:
 
-```
-Phase 0: Prerequisites (API keys, infrastructure)
-Phase 1: Concept & Brand (Master Concept, Brand Kit, Naming, Marketing)
-Phase 2: Design (UX Design, Technical PRD)
-Phase 3: Quality Gate #1 (Consistency checks)
-Phase 4: Sync & Planning (Notion, Template Selection, Integration, Stage Planning)
-Phase 5: Quality Gate #2 (Architecture consistency)
-Phase 6: Implementation & Security (Stage Execution)
-Phase 7: Completion (Final validation)
+```bash
+# Load context for a specific phase
+.claude/scripts/co-ceo/load-phase-context.sh <phase-id>
+
+# Example: Load Phase 2.1 context
+.claude/scripts/co-ceo/load-phase-context.sh 2.1
+
+# Check phase dependencies
+.claude/scripts/co-ceo/load-phase-context.sh --deps 3.1
+
+# List all phases and their skills
+.claude/scripts/co-ceo/load-phase-context.sh --list
 ```
 
-Each phase has:
-- A phase skill in `.claude/skills/co-ceo-phases/phase-X-Y-name/SKILL.md`
-- Associated domain skills for specific tasks
-- Agent descriptions for autonomous execution
-- Helper scripts for automation
+This approach:
+- Reduces context window usage
+- Provides detailed agent instructions when needed
+- Keeps the slim process file for navigation
 
-## File Organization
+## Key Principles
 
-```
-.claude/
-├── agents/                    # Agent descriptions (YAML frontmatter + instructions)
-│   ├── brand-kit-creator.md
-│   ├── mvp-ux-designer.md
-│   └── ...
-├── skills/                    # Skills (SKILL.md with frontmatter)
-│   ├── co-ceo-phases/         # Phase orchestration skills
-│   │   ├── phase-1-1-master-concept/
-│   │   ├── phase-1-2-brand-kit/
-│   │   └── ...
-│   ├── master-concept-creation/
-│   ├── mvp-brand-kit-creation/
-│   └── ...
-├── scripts/                   # Helper scripts
-│   ├── co-ceo/               # Phase management scripts
-│   ├── supabase/             # Supabase operations
-│   ├── stripe/               # Stripe operations
-│   └── ...
-└── docs/                     # Documentation and test results
-```
+### User-in-the-Loop
+Some processes require user conversation (Master Concept, naming, frontend design). Others can be autonomous Agents. The process file specifies which is which.
 
-## Creating/Editing Skills
+### 3-Attempt Retry Protocol
+Agents encountering errors must:
+1. Attempt systematic debugging
+2. Try an alternative approach
+3. After 3 failed attempts → document issue and escalate to you
 
-**Location:** `.claude/skills/<skill-name>/SKILL.md`
+### Escalation Protocol
+When escalating to the main user:
+- Summarize the issue clearly
+- Show what was attempted
+- Propose options (not just "what should I do?")
 
-**Use the `writing-skills` skill** for detailed guidance on skill creation.
+### Progress Tracking
+- Main progress → `docs/Project-Technical-Architecture.md` (after it's created)
+- Stage-specific progress → individual stage architecture files
+- Master Concept is for strategy, NOT progress tracking
 
-**Key requirements:**
-- YAML frontmatter with `name` and `description` fields only
-- Description starts with "Use when..." and describes triggering conditions
-- Follow TDD approach: test with subagents before finalizing
-- Keep it concise and actionable
-- Cross-reference other skills instead of duplicating content
+### Git Workflow Orchestration
+During Phase 6 implementation, you MUST manage git branches before and after spawning agents:
+- **Sequential execution is the default** - one stage agent at a time
+- **Switch branches between stages** - create/checkout stage branch before spawning, merge after completion
+- **Parallel execution is limited** - only when stages touch completely different files with zero overlap
 
-**Structure:**
-```markdown
----
-name: skill-name
-description: Use when [specific triggering conditions]
----
-
-# Skill Name
-
-## Overview
-Core principle in 1-2 sentences.
-
-## When to Use
-Specific symptoms and situations.
-
-## Core Pattern
-Before/after or step-by-step guidance.
-
-## Common Mistakes
-What goes wrong + fixes.
-```
-
-## Creating/Editing Agent Descriptions
-
-**Location:** `.claude/agents/<agent-name>.md`
-
-**Structure:**
-```markdown
----
-name: agent-name
-description: Use this agent when... [triggering conditions with examples]
-model: haiku|opus
-color: red|blue|green|yellow|purple|orange
----
-
-You are a [Role] agent specializing in [specialty].
-
-INPUT REQUIREMENTS:
-- What the agent needs to read/know before starting
-
-CORE RESPONSIBILITIES:
-- What the agent should accomplish
-
-OUTPUT REQUIREMENTS:
-- Expected deliverables
-
-OPERATIONAL CONSTRAINTS:
-- You MUST NOT spawn additional agents
-- 3-attempt retry protocol
-- Escalation format
-
-QUALITY ASSURANCE:
-- How to verify work
-
-SUCCESS CRITERIA:
-- Checklist for completion
-```
-
-## Key Principles for Meta-Folder Improvements
-
-### 1. Minimal Changes
-Make the smallest change that achieves the goal. Preserve existing patterns.
-
-### 2. Follow Established Conventions
-- Match the style of existing skills and agents
-- Use the same YAML frontmatter structure
-- Follow the same file naming conventions
-
-### 3. Test Before Deploying
-- For skills: Use subagents to verify the skill works
-- For scripts: Test execution paths
-- For documentation: Verify links work
-
-### 4. Document Dependencies
-If you add or change dependencies between files, update all affected files.
-
-### 5. Preserve Backward Compatibility
-Don't break existing MVP projects that use this meta-folder.
-
-## Helper Scripts for Meta-Folder Development
-
-Located at `.claude/scripts/`:
-
-| Script Category | Purpose |
-|-----------------|---------|
-| `co-ceo/` | Phase management, git operations |
-| `supabase/` | Database operations, migrations, security audits |
-| `stripe/` | Product deployment, webhook validation |
-| `templates/` | Template validation, brand token application |
-| `consistency-check/` | Document validation, cross-reference checking |
-| `marketing/` | Keyword research, trend analysis |
+See `slimmed-strategic-co-ceo-process.md` Phase 6.1 for detailed orchestration steps.
 
 ## Model Selection Guide
 
 | Task Type | Model | Rationale |
 |-----------|-------|-----------|
-| Simple documentation, patterns | Haiku | Token-efficient |
-| Complex architecture, reasoning | Opus | Complex analysis required |
-| Quality checking, validation | Haiku | Rule-based, structured |
-| Security reviews | Opus | Critical analysis |
+| Coding, testing, plans (short) | Haiku | Token-efficient, highly capable |
+| Technical architecture, security review | Opus | Complex reasoning required |
+| Quality checking | Haiku | Structured, rule-based |
+| You (Co-CEO Session) | Opus | Orchestration complexity |
 
-**Never use Sonnet** - Opus is more capable and often more token-efficient for complex tasks.
+**Never use Sonnet** - Opus is more capable and more token-efficient for complex tasks.
 
-## Common Improvement Tasks
+## Available Skills
 
-### Adding a New Phase
-1. Create phase skill in `.claude/skills/co-ceo-phases/`
-2. Update `slimmed-strategic-co-ceo-process.md` with new phase
-3. Add any needed agent descriptions
-4. Add helper scripts if needed
-5. Update this CLAUDE.md if patterns change
+Skills are located at `.claude/skills/`. Key skills for MVP development:
 
-### Adding a New Skill
-1. Read `writing-skills` skill for guidance
-2. Create directory in `.claude/skills/<skill-name>/`
-3. Write SKILL.md with proper frontmatter
-4. Test with subagents before completing
-5. Update any phase skills that should reference it
+### Phase-Specific Skills (Co-CEO Orchestration)
 
-### Adding a New Agent
-1. Create file in `.claude/agents/<agent-name>.md`
-2. Follow the YAML frontmatter structure
-3. Provide clear input/output requirements
-4. Include escalation format
-5. Update phase skill that invokes this agent
+Located at `.claude/skills/co-ceo-phases/`:
 
-### Improving Documentation
-1. Follow all links to understand context
-2. Make minimal, focused edits
-3. Verify all internal links still work
-4. Test any code examples
+| Phase | Skill Folder | Mode |
+|-------|--------------|------|
+| 0.0 | `phase-0-0-api-prerequisites` | Conversational |
+| 1.1 | `phase-1-1-master-concept` | Conversational |
+| 1.2 | `phase-1-2-brand-kit` | Agent |
+| 1.3 | `phase-1-3-naming-domain` | Conversational |
+| 1.4 | `phase-1-4-marketing-foundation` | Sequential Agents |
+| 1.5 | `phase-1-5-session-break` | Conversational (optional) |
+| 2.1 | `phase-2-1-ux-design` | Agent |
+| 2.2 | `phase-2-2-technical-prd` | Agent |
+| 3.1 | `phase-3-1-quality-gate` | Agent |
+| 4.1 | `phase-4-1-notion-sync` | Agent (optional) |
+| 4.2 | `phase-4-2-user-approval` | Conversational |
+| 4.2.5 | `phase-4-2-5-infrastructure-prerequisites` | Conversational (BLOCKING) |
+| 4.3 | `phase-4-3-template-integration` | Sequential+Parallel Agents |
+| 4.4 | `phase-4-4-stage-planning` | Parallel Agents |
+| 5.1 | `phase-5-1-architecture-check` | Agent |
+| 6.1-6.2 | `phase-6-*` | Agent |
+| 7.1 | `phase-7-1-completion` | Conversational |
 
-## Escalation Protocol
+### Domain Skills (Called by Phase Skills)
 
-When you encounter issues you cannot resolve:
+| Process | Skill | Notes |
+|---------|-------|-------|
+| Master Concept | `master-concept-creation` | Conversational with user |
+| Brand Kit | `mvp-brand-kit-creation` | Agent |
+| Domain brainstorming | `domain-name-brainstormer` | Conversational with user |
+| Positioning | `positioning-angles-generator` | Agent (Phase 1.4.1) |
+| Keyword Research | `keyword-research-generator` | Agent (Phase 1.4.2) |
+| Lead Magnets | `lead-magnet-architect` | Agent (Phase 1.4.3) |
+| Direct Response Copy | `direct-response-copy-generator` | Agent (Phase 1.4.4) |
+| Brand Voice | `brand-voice-codifier` | Agent (Phase 1.4.5) |
+| SEO Content | `seo-content-planner` | Agent (Phase 1.4.6) |
+| UX Design | `mvp-ux-design` | Agent |
+| Technical PRD | `mvp-technical-prd-architecture` | Agent |
+| Git Structure | `mvp-git-structure-design` | Agent |
+| Quality Check | `consistency-quality-check` | Agent |
+| Security Review | `mvp-security-review` | Agent (Opus) |
+| Notion sync | `notion-*` skills | Agent |
+| Implementation | `test-driven-development`, `systematic-debugging`, `verification-before-completion` | Agents |
+| Planning | `writing-plans`, `executing-plans`, `subagent-driven-development` | Agents |
 
-1. **Document the issue clearly** - what you were trying to do
-2. **Show what you've attempted** - with specific examples
-3. **Identify blocking factors** - what's preventing progress
-4. **Propose options** - ways forward for user consideration
+## Detailed Guidance
 
-## Self-Verification Checklist
+**→ CRITICAL: See `slimmed-strategic-co-ceo-process.md`** for:
+- **Co-CEO Session Initialization Checklist** - Run this before starting any project
+- **Co-CEO Core Operating Principles** - Read these at each phase boundary
+- Complete process dependency tree
+- Phase Skills Reference table (mapping phases to skills)
+- Helper Scripts Reference table
+- Model Selection Reference
+- Agent Error Protocol (3-attempt rule)
+- **Co-CEO Self-Verification Checklist** - Use this after each phase completes
 
-Before completing any meta-folder improvement:
+**→ For detailed phase instructions:** Use `load-phase-context.sh` to load the specific phase skill when you need it. Each phase skill contains:
+- Agent spawn instructions with full prompts
+- Completion criteria
+- Git commit instructions
+- Verification steps
 
-- [ ] I've read `slimmed-strategic-co-ceo-process.md`
-- [ ] I've followed relevant links to understand the complete system
-- [ ] My changes follow existing patterns and conventions
-- [ ] For skills: I've tested with subagents (if applicable)
-- [ ] For scripts: I've verified they execute correctly
-- [ ] All internal links still work
-- [ ] Changes are minimal and focused
-- [ ] Backward compatibility is preserved
+## Helper Scripts
+
+Located at `.claude/scripts/co-ceo/`:
+
+| Script | Purpose |
+|--------|---------|
+| `load-phase-context.sh` | Load phase-specific skill content |
+| `verify-phase-completion.sh` | Check phase completion status |
+| `git-commit-phase.sh` | Commit with standardized phase message |
+| `update-project-status.sh` | Update status in Technical PRD |
+| `check-infrastructure-prerequisites.sh` | Verify Stripe/Supabase connections (Phase 4.2.5) |
+
+## Files You'll Create/Manage
+
+```
+docs/
+├── concept/
+│   └── master-concept.md              # Master Concept document
+├── brand/
+│   └── brand-kit-guide.md             # Brand Kit & Guide
+├── mvp-ux-[project].md                # MVP User Experience
+├── Project-Technical-Architecture.md  # Technical PRD
+├── selected-template.txt              # Template choice (Phase 4.2)
+├── infrastructure-verified.json       # Stripe/Supabase verification (Phase 4.2.5)
+├── deployment-record.json             # Deployment tracking (Phase 4.3)
+└── stages/
+    ├── stage-01-core-engine.md        # Stage-specific architectures
+    ├── stage-02-backend.md
+    └── ...
+```
+
+## Starting a New Project
+
+If this is a fresh project duplicate:
+1. Look for an Overall Concept file with the initial idea
+2. Begin with Master Concept refinement (conversational)
+3. Follow the dependency tree in `slimmed-strategic-co-ceo-process.md`
+
+If resuming an existing project:
+1. Check which documents exist
+2. Verify their quality with `consistency-quality-check` skill
+3. Continue from the appropriate step
 
 ---
 
-*This is the meta-folder for MVP development. Changes here affect all future MVP projects using this system. Be thorough, be careful, be minimal.*
+*This is a Meta-project folder for MVPs. The structure, skills, and processes are designed for rapid MVP development with AI Agents.*

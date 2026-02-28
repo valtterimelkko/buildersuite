@@ -809,7 +809,7 @@ my-saas-project/
 **Long answer**: The AI agents write all the code. Your job is to make strategic decisions:
 - What should the product do?
 - Who is it for?
-- What should it be called?
+- What should your product be named?
 - Which features are most important?
 
 If you can use Google Docs and make decisions about your business, you can use Buildersuite.

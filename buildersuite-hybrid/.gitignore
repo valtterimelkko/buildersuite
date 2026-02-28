@@ -1,0 +1,218 @@
+# =============================================================================
+# OS & Editor
+# =============================================================================
+.DS_Store
+.AppleDouble
+.LSOverride
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.iml
+.env.local
+.vscode/settings.json
+
+# =============================================================================
+# Node.js / JavaScript / TypeScript
+# =============================================================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.tsbuildinfo
+dist/
+build/
+.next/
+out/
+.nuxt/
+.cache/
+.vuepress/dist/
+.serverless/
+.fusebox/
+.dynamodb/
+.tern-port
+
+# =============================================================================
+# Python
+# =============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.hypothesis/
+.venv/
+ENV/
+env/
+venv/
+ENV.bak/
+env.bak/
+
+# =============================================================================
+# Rust
+# =============================================================================
+target/
+Cargo.lock
+**/*.rs.bk
+
+# =============================================================================
+# Go
+# =============================================================================
+/bin/
+/vendor/
+*.test
+*.out
+
+# =============================================================================
+# Java
+# =============================================================================
+*.class
+*.jar
+*.war
+*.ear
+target/
+.gradle/
+.m2/
+
+# =============================================================================
+# Credentials & Secrets (CRITICAL - NEVER COMMIT THESE)
+# =============================================================================
+.env
+.env.local
+.env.*.local
+.env.prod
+.env.staging
+.env.development
+secrets/
+*.key
+*.pem
+*.crt
+*.pfx
+.aws/
+.ssh/
+~/.credentials
+config.conf
+projects.json
+env.conf
+
+# =============================================================================
+# Local Development / Temporary Files
+# =============================================================================
+*.log
+logs/
+*.pid
+*.seed
+.tmp/
+tmp/
+temp/
+.cache/
+.DS_Store
+Thumbs.db
+*.orig
+*.backup
+
+# =============================================================================
+# IDE-specific files
+# =============================================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.sublime-*
+*.iml
+.c9/
+*.sublime-project
+*.sublime-workspace
+
+# =============================================================================
+# Database
+# =============================================================================
+*.db
+*.sqlite
+*.sqlite3
+*.pdb
+
+# =============================================================================
+# OS-specific files
+# =============================================================================
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# =============================================================================
+# Docker
+# =============================================================================
+.docker/
+docker-compose.override.yml
+
+# =============================================================================
+# Git worktrees (created by using-git-worktrees skill)
+# =============================================================================
+worktrees/
+.worktree-*
+
+# =============================================================================
+# Build outputs & artifacts
+# =============================================================================
+dist/
+build/
+*.tgz
+*.zip
+
+# =============================================================================
+# Claude Code local credentials (if used)
+# =============================================================================
+.claude/credentials/
+
+# =============================================================================
+# Additional Security - Never commit these
+# =============================================================================
+.env.backup
+.env.*.backup
+*.env.bak
+*secret*
+*token*
+*password*
+*credential*
+.api_keys
+api_keys.json
+credentials.json
+service-account*.json
+*private*.json
+
+# =============================================================================
+# Frontend viewing site demo mode assets
+# =============================================================================
+!frontend-viewing-site/**/lib/
+!frontend-viewing-site/**/lib/**
+!frontend-viewing-site/**/.env.local

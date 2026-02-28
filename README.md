@@ -1,8 +1,8 @@
 # Buildersuite
 
-> **AI-Powered Meta-Framework for Building SaaS MVPs**
+> **An almost fully autonomous AI coding agent experience that builds your SaaS MVP for you. You drive the important decisions - the AI handles the implementation.**
 
-Buildersuite is a production-ready, agentic workflow system for rapidly developing Software-as-a-Service (SaaS) Minimum Viable Products (MVPs) from concept to deployment. It orchestrates multiple AI agents through a structured 7-phase development process called the **Co-CEO Process**.
+Buildersuite is designed especially for non-technical founders who want to build an MVP fast, test with real users, and then improve it based on feedback. Through the **Co-CEO Process**, specialized AI agents handle both technical development AND marketing planning—from concept to deployment, from brand positioning to SEO strategy.
 
 This repository contains **three variations** of the same core framework, designed for different AI tooling preferences and budgets:
 
@@ -16,6 +16,9 @@ This repository contains **three variations** of the same core framework, design
 
 ## Table of Contents
 
+- [Who This Is For](#who-this-is-for)
+- [What Makes Buildersuite Different?](#what-makes-buildersuite-different)
+- [The Autonomous Marketing Planning Process](#the-autonomous-marketing-planning-process)
 - [What is the Co-CEO Process?](#what-is-the-co-ceo-process)
 - [The Three Variations Explained](#the-three-variations-explained)
 - [Quick Start](#quick-start)
@@ -26,291 +29,454 @@ This repository contains **three variations** of the same core framework, design
 
 ---
 
+## Who This Is For
+
+Buildersuite is perfect for:
+
+- **Non-technical founders** who have a SaaS idea but don't know how to code
+- **Entrepreneurs** who want to validate their MVP quickly with real users
+- **Product managers** who need to launch fast without a full development team
+- **Startup founders** who want professional marketing planning alongside technical execution
+
+You don't need coding skills. The AI agents handle the implementation while you focus on the important strategic decisions: What should your product do? Who is it for? What should it be called?
+
+---
+
+## What Makes Buildersuite Different?
+
+Unlike code generation tools that just write code, Buildersuite provides an **end-to-end autonomous experience** that includes:
+
+### ✅ Complete Technical Implementation
+- Database design and security
+- User authentication and payments
+- Full-stack application code
+- Deployment-ready infrastructure
+
+### ✅ Professional Marketing Planning
+- Market positioning strategy using 8 proven frameworks
+- SEO keyword research with real search volume data
+- Lead generation strategy and nurture sequences
+- Landing page copy using direct response frameworks
+- Content strategy with 6-month roadmap
+- Brand voice guidelines for consistency
+
+### ✅ Data-Driven Insights
+The autonomous agents don't just guess—they pull real market data:
+- **Google Ads API** for search volume and cost-per-click data
+- **Google Trends** for trend velocity and rising search queries
+- **Autosuggest mining** for long-tail keyword opportunities
+- **Domain availability** checking via Porkbun API
+
+---
+
+## The Autonomous Marketing Planning Process
+
+One of Buildersuite's most powerful features is its **autonomous marketing planning**. While you're getting your MVP built, you're also getting a complete go-to-market strategy—something most technical tools completely ignore.
+
+### The 6 Marketing Agents
+
+During Phase 1.4 of the Co-CEO Process, six specialized marketing agents execute in sequence to build your complete marketing foundation:
+
+#### 1. **Positioning Angles Generator**
+**What it does:** Analyzes your concept and generates 3-5 strategic positioning angles using 8 proven frameworks (Category Positioning, Comparative Positioning, Audience-First, Outcome-Based, Problem-Centric, Speed/Simplicity, Values/Mission, and Proof-Based).
+
+**What you get:** 
+- Multiple positioning angle candidates with headline variants
+- Smoke-test-ready headlines for validation
+- Recommendations on which positioning to lead with
+- Strategic foundation for all marketing messaging
+
+**Why it matters:** Positioning determines how customers categorize and value your product. Get this wrong and even great products fail to gain traction.
+
+---
+
+#### 2. **Keyword Research Generator**
+**What it does:** Uses the "6 Circles Method" to build a comprehensive keyword map. Optionally integrates with Google Ads API and pytrends for real search data.
+
+**Data sources it uses:**
+- **Google Ads API**: Search volume, cost-per-click (CPC), and competition levels
+- **Google Trends (pytrends)**: Trend velocity, rising queries, related terms—no API key needed
+- **Autosuggest scraping**: Google/Bing autocomplete suggestions for long-tail keywords
+
+**What you get:**
+- Prioritized keyword list with search volume and competition data
+- Keywords mapped to funnel stages (awareness, consideration, decision)
+- Top 10-20 priority keywords with targeting rationale
+- "RevenueZen Matrix" scoring based on intent and competition
+
+**Why it matters:** Without keyword research, you're creating content in the dark. This agent identifies exactly what your target customers are searching for.
+
+---
+
+#### 3. **Lead Magnet Architect**
+**What it does:** Designs high-intent lead magnets using "Value Exchange Economics"—not vanity downloads, but assets that qualify prospects.
+
+**What you get:**
+- 2-3 lead magnet format recommendations from a 20-format library
+- Detailed specs: titles, hooks, content outlines, design requirements
+- Landing page structure for testing
+- Post-download nurture sequence (3-5 emails)
+- A/B test hypotheses for validation
+
+**Format library includes:**
+- Downloadable utilities (templates, checklists, calculators)
+- Educational content (guides, whitepapers, case studies)
+- Interactive tools (quizzes, assessments, audits)
+- Community access (newsletters, challenges, courses)
+
+**Why it matters:** Most founders struggle with lead generation. This agent designs magnets that attract *qualified* leads, not just email addresses.
+
+---
+
+#### 4. **Direct Response Copywriter**
+**What it does:** Generates high-converting copy for landing pages, emails, and ads using proven frameworks: PAS (Problem-Agitate-Solution), AIDA (Attention-Interest-Desire-Action), BAB (Before-After-Bridge), and JTBD (Jobs-to-Be-Done).
+
+**What you get:**
+- Complete landing page copy (hero, problem, solution, features, social proof, FAQ, CTA)
+- Email sequences (welcome, nurture, activation, conversion)
+- Ad copy variants for social and search ads
+- Multiple copy alternatives for A/B testing
+- Framework application notes explaining the psychology
+
+**Why it matters:** Converting visitors to users is where most MVPs fail. Professional direct response copy dramatically improves conversion rates.
+
+---
+
+#### 5. **Brand Voice Codifier**
+**What it does:** Extends your brand kit with operational voice guidelines using the Nielsen Norman 4 Tone Dimensions framework.
+
+**What you get:**
+- Voice vs. Tone distinction explained
+- Tone dimension ratings (Funny↔Serious, Formal↔Casual, Respectful↔Irreverent, Enthusiastic↔Matter-of-Fact)
+- "This, Not That" framework with 10+ concrete examples
+- Context-specific tone variations (errors, success states, onboarding, billing, support)
+- Microcopy dictionary (buttons, system messages, form patterns)
+- Voice governance guidelines
+
+**Why it matters:** Inconsistent voice confuses customers and damages trust. These guidelines ensure every touchpoint—from error messages to marketing emails—feels cohesive.
+
+---
+
+#### 6. **SEO Content Planner**
+**What it does:** Transforms keyword research into an actionable 6-month content strategy using the Pillar-Cluster model and Business Potential scoring.
+
+**What you get:**
+- 3-5 pillar pages identified with cluster topics
+- Content mapped to buyer journey stages (ToFu, MoFu, BoFu)
+- Business Potential scoring (traffic × business value)
+- Prioritized 6-month content calendar
+- Reusable content brief template
+- Internal linking strategy
+
+**Why it matters:** Content without strategy is wasted effort. This agent ensures every piece of content you create serves a strategic purpose and drives organic traffic.
+
+---
+
+### The Power of Integration
+
+These six agents don't work in isolation—they build on each other:
+
+1. **Positioning** establishes your strategic foundation
+2. **Keywords** identify what your audience is searching for
+3. **Lead magnets** convert that search traffic into qualified leads
+4. **Copy** turns those leads into users
+5. **Voice guidelines** ensure consistency across all touchpoints
+6. **Content strategy** creates a sustainable organic growth engine
+
+And here's the best part: **All of this happens autonomously.** You review and approve, but you don't have to become a marketing expert or hire an agency. The AI agents execute based on proven frameworks and real market data.
+
+---
+
 ## What is the Co-CEO Process?
 
-The **Co-CEO Process** is a sophisticated, multi-phase agentic workflow that treats AI agents as specialized team members working under your direction. Just as a startup might have a CEO handling vision and a CTO handling implementation, the Co-CEO process assigns specific roles to different AI agents at different phases of development.
+The **Co-CEO Process** is your AI-powered team that builds your SaaS MVP from concept to launch. Think of it like having a startup co-founder who handles all the technical and marketing work while you focus on strategic decisions.
 
-### Core Philosophy
+### How It Works: You Lead, AI Executes
 
-1. **Orchestration over Implementation**: You (the human) and the Co-CEO orchestration layer direct specialized agents, rather than doing the work yourself
-2. **Phase-Gated Development**: Each phase has specific inputs, outputs, and quality gates
-3. **Agent Specialization**: Different tasks require different agent capabilities (creative vs. technical)
-4. **Platform Flexibility**: Use the AI tools that match your budget and preferences
+**Your Role (The Strategic Decisions):**
+- Define what your product should do
+- Choose your target audience
+- Pick your product name and branding direction
+- Select which features to prioritize
+- Review and approve what the AI creates
 
-### How It Works
+**AI's Role (The Implementation):**
+- Write all the code for your application
+- Design your database and security
+- Create your brand identity and marketing materials
+- Research keywords and plan your SEO strategy
+- Generate landing page copy and email sequences
+- Set up payments and user authentication
+
+### The Development Journey
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                           CO-CEO PROCESS                                 │
+│                     YOUR AI-POWERED MVP JOURNEY                          │
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                          │
-│  Phase 0: Prerequisites ───────► API & Infrastructure Setup             │
+│  Phase 0: Setup ───────────────► Get your API keys ready                │
 │       │                                                                  │
 │       ▼                                                                  │
-│  Phase 1: Concept & Brand ─────► Master Concept → Brand Kit → Marketing │
+│  Phase 1: Concept & Marketing ─► Brand + Marketing Strategy             │
+│       │                          (6 Marketing Agents Execute Here)      │
+│       ▼                                                                  │
+│  Phase 2: Design ──────────────► UX Design + Technical Architecture     │
 │       │                                                                  │
 │       ▼                                                                  │
-│  Phase 2: Design ──────────────► UX Design → Technical Architecture     │
+│  Phase 3: Quality Check ───────► Validate Everything Fits Together      │
 │       │                                                                  │
 │       ▼                                                                  │
-│  Phase 3: Quality Gate #1 ─────► Document Consistency Validation        │
+│  Phase 4: Planning ────────────► Pick Your Template + Setup Services    │
 │       │                                                                  │
 │       ▼                                                                  │
-│  Phase 4: Planning ────────────► Notion Sync → Template Selection       │
-│       │                         → Security Audit → Stage Planning       │
-│       ▼                                                                  │
-│  Phase 5: Quality Gate #2 ─────► Architecture Consistency Check         │
+│  Phase 5: Quality Check ───────► Final Architecture Review              │
 │       │                                                                  │
 │       ▼                                                                  │
-│  Phase 6: Implementation ──────► Security Review → Stage Execution      │
-│       │                         → Build Verification                    │
+│  Phase 6: Build ───────────────► AI Writes All Your Code                │
+│       │                                                                  │
 │       ▼                                                                  │
-│  Phase 7: Completion ──────────► Final Validation & Handoff             │
+│  Phase 7: Launch ──────────────► Deploy and Get Feedback                │
 │                                                                          │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-Each phase uses **specialized sub-agents** for tasks like brand creation, UX design, technical architecture, and implementation. The Co-CEO orchestration layer manages handoffs between these agents.
+Each phase uses **specialized AI agents** that are experts in their domain—brand creation, UX design, technical architecture, marketing strategy, and code implementation. You make the decisions, they do the work.
 
 ---
 
 ## The Three Variations Explained
 
+Buildersuite comes in three versions to fit different budgets and preferences. All three deliver the same complete experience—technical implementation + marketing planning—they just use different AI tools:
+
+| Variation | AI Tools Used | Best For | Monthly Cost Estimate |
+|-----------|---------------|----------|-----------------------|
+| **buildersuite-claude** | Claude Code only | Premium experience, simplest setup | ~$50-100 |
+| **buildersuite-hybrid** | Claude Code + Kimi Code | Balanced cost and quality | ~$30-60 |
+| **buildersuite-glm** | Kimi Code + GLM-5 | Budget-conscious builders | ~$15-30 |
+
 ### buildersuite-claude (Pure Claude Code)
 
-**Best for**: Users who want the most streamlined experience with a single, powerful AI tool
+**Best for**: Founders who want the smoothest experience and don't mind the premium price
 
-**What it is**: The original, complete implementation using **Claude Code** as the sole AI orchestrator throughout all 7 phases.
+**What it is**: Uses Claude Code for everything—brand creation, marketing strategy, and code implementation. One tool, one workflow.
 
 **Key characteristics**:
-- Uses Claude's built-in multi-agent spawning with model selection (`haiku` for fast/creative tasks, `opus` for complex/technical tasks)
-- 20+ specialized agent definitions in `.claude/agents/`
-- 58+ skills in `.claude/skills/`
-- All phases (0-7) use Claude Code
+- Single AI tool to learn (Claude Code)
+- Best brand and UX design quality
+- Excellent for creative work (branding, marketing, copywriting)
+- 20+ specialized agents built-in
+- Most polished and tested version
 
 **Pros**:
-- ✅ Single tool to learn and use
-- ✅ Best-in-class UI/UX design capabilities
-- ✅ Excellent for creative phases (branding, marketing)
-- ✅ Seamless agent handoffs within one platform
-- ✅ Most mature and tested implementation
+- ✅ Simplest setup—just one tool
+- ✅ Best creative output quality
+- ✅ Smoothest workflow
+- ✅ Most mature implementation
 
 **Cons**:
-- ❌ Higher cost (Claude Code is premium priced)
+- ❌ Higher monthly cost (~$50-100)
 - ❌ Requires Claude Code subscription
-- ❌ No alternative for budget-conscious users
 
-**Entry point**: `CLAUDE.md` or `CLAUDE_Reserve.md`
+**Start here**: Open `CLAUDE.md` or `CLAUDE_Reserve.md` in Claude Code
 
 ---
 
 ### buildersuite-hybrid (Claude Code + Kimi Code CLI)
 
-**Best for**: Users who want Claude's creative excellence but more cost-effective implementation
+**Best for**: Founders who want Claude's creative excellence at a lower cost
 
-**What it is**: A **hybrid workflow** that strategically splits phases between Claude Code (for creative work) and Kimi Code CLI (for technical implementation).
+**What it is**: Uses Claude Code for creative work (branding, marketing) and switches to Kimi Code CLI for technical implementation.
 
-**Phase Distribution**:
-| Phases | Platform | Why |
-|--------|----------|-----|
-| 0.0 - 1.5 | **Claude Code** | Creative work: concept, brand kit, marketing |
-| 1.5 (break) | Transition | Handoff point |
-| 2.1 - 7.1 | **Kimi Code CLI** | Technical work: design, architecture, implementation |
-
-**Key characteristics**:
-- Shared `.shared/` directory contains skills and scripts used by both platforms
-- Claude agents in `.claude/agents/` (21 agents)
-- Kimi wrappers in `.kimi/skills/`
-- Dual entry points: `CLAUDE_Reserve.md` and `KIMI_Reserve.md`
+**Phase Split**:
+| Phases | Tool Used | What Happens |
+|--------|-----------|--------------|
+| 0.0 - 1.5 | Claude Code | Concept, brand, and marketing strategy |
+| 2.1 - 7.1 | Kimi Code CLI | Design, architecture, and code implementation |
 
 **Pros**:
-- ✅ Leverages Claude's strength in creative/marketing phases
-- ✅ Uses Kimi's cost-effective implementation for coding
-- ✅ Shared skill library means no duplication
-- ✅ Best of both worlds approach
+- ✅ Best of both worlds: Claude's creativity + Kimi's cost-effectiveness
+- ✅ Lower cost than pure Claude (~$30-60/month)
+- ✅ Same high-quality outputs
 
 **Cons**:
-- ❌ Requires both Claude Code and Kimi Code CLI
-- ❌ Context switching between platforms at Phase 1.5
+- ❌ Need both Claude Code and Kimi Code CLI
+- ❌ Switch tools at Phase 1.5
 - ❌ Slightly more complex setup
 
-**Entry points**: 
-- Start: `CLAUDE_Reserve.md` (Phases 0-1.5)
-- Continue: `KIMI_Reserve.md` (Phases 2-7)
+**Start here**: 
+- Begin with `CLAUDE_Reserve.md` in Claude Code (Phases 0-1.5)
+- Continue with `KIMI_Reserve.md` in Kimi Code CLI (Phases 2-7)
 
 ---
 
 ### buildersuite-glm (Kimi Code CLI + GLM-5)
 
-**Best for**: Budget-conscious users who want excellent software engineering capabilities at lower cost
+**Best for**: Budget-conscious founders who want excellent quality at the lowest cost
 
-**What it is**: A **cost-optimized hybrid** using Kimi Code CLI for early phases and GLM-5 for implementation. GLM-5 is a highly capable coding model available through various harnesses.
+**What it is**: Uses Kimi Code CLI for early phases (concept, brand, design) and GLM-5 for implementation. GLM-5 is a powerful coding model available through various tools.
 
-**Phase Distribution**:
-| Phases | Platform | Model | Purpose |
-|--------|----------|-------|---------|
-| 0.0 - 4.2 | **Kimi Code CLI** | `kimi-k2.5` | Concept, brand, design, planning |
-| 4.3 - 7.1 | **GLM-5** | `GLM-5` | Integration, implementation, completion |
-
-**Key characteristics**:
-- Kimi agents in `.kimi/agents/` (15 agents for phases 0-4.2)
-- GLM-5 agents in `.glm5/agents/` (6 agents for phases 4.3-7.1)
-- Shared `.shared/` resources like the hybrid version
-- Explicit model selection in agent prompts
+**Phase Split**:
+| Phases | Tool Used | Model | What Happens |
+|--------|-----------|-------|--------------|
+| 0.0 - 4.2 | Kimi Code CLI | kimi-k2.5 | Concept, brand, design, planning |
+| 4.3 - 7.1 | GLM-5 Harness | GLM-5 | Integration and code implementation |
 
 **Pros**:
-- ✅ Most cost-effective option
-- ✅ GLM-5 is excellent at software engineering tasks
-- ✅ Kimi handles creative phases well
-- ✅ Can use various GLM-5 harnesses (Roo Code, OpenCode, Kilo Code, etc.)
-- ✅ Shared resources minimize duplication
+- ✅ Most affordable option (~$15-30/month)
+- ✅ GLM-5 excels at software engineering
+- ✅ Same deliverables as other versions
 
 **Cons**:
-- ❌ Requires Kimi Code CLI + GLM-5 setup
-- ❌ Context switching at Phase 4.3
-- ❌ GLM-5 may not match Claude's UI/UX design capabilities
-- ❌ More complex tool chain
+- ❌ Two tools required + GLM-5 harness setup
+- ❌ Tool switch at Phase 4.3
+- ❌ More complex toolchain
 
-**Entry points**:
-- Start: `AGENTS_Reserve.md` (Kimi, Phases 0-4.2)
-- Continue: `CLAUDE_Reserve.md` (GLM-5, Phases 4.3-7.1)
+**GLM-5 harness options**: Roo Code, OpenCode, Kilo Code, Kimi Code CLI, Cline
+
+**Start here**:
+- Begin with `AGENTS_Reserve.md` in Kimi Code CLI (Phases 0-4.2)
+- Continue with `CLAUDE_Reserve.md` using GLM-5 (Phases 4.3-7.1)
 
 ---
 
 ## Quick Start
 
-### Prerequisites
+### What You'll Need Before Starting
 
-Before starting, you'll need:
-1. **Git** installed
-2. **Node.js** (v18+) for frontend templates
-3. **Python** (v3.9+) for helper scripts
-4. API accounts (see [Getting API Keys](#getting-api-keys))
+1. **A computer** with Git, Node.js (v18+), and Python (v3.9+)
+2. **Your SaaS idea** written down in a document
+3. **API accounts** for required services (we'll help you get these)
+4. **2-3 hours** for your first session
 
-### Step 1: Choose Your Variation
+Don't worry if you don't have the API accounts yet—Phase 0 will guide you through setting them up.
 
-Decide which variation fits your budget and preferences:
+### Step 1: Pick Your Version
+
+Choose based on your budget and comfort level:
 
 ```bash
-# Option A: Pure Claude (premium experience)
+# Option A: Claude only (simplest, ~$50-100/month)
 cp -r buildersuite-claude my-saas-project
 
-# Option B: Claude + Kimi hybrid (balanced)
+# Option B: Claude + Kimi (balanced, ~$30-60/month)
 cp -r buildersuite-hybrid my-saas-project
 
-# Option C: Kimi + GLM-5 (budget-optimized)
+# Option C: Kimi + GLM-5 (budget-friendly, ~$15-30/month)
 cp -r buildersuite-glm my-saas-project
 ```
 
-### Step 2: Initialize Your Project
+**Not sure which to pick?** Start with **buildersuite-claude** for the smoothest experience.
+
+### Step 2: Set Up Your Project
 
 ```bash
 cd my-saas-project
 
-# Initialize git
+# Initialize git (so you can save your progress)
 git init
 git config user.email "your-email@example.com"
 git config user.name "Your Name"
 
-# Copy environment template
+# Create environment file for API keys (you'll fill this in Phase 0)
 cp .env.example .env
-
-# Edit .env with your API keys (see next section)
-nano .env  # or your preferred editor
 ```
 
-### Step 3: Install Dependencies
-
-```bash
-# For template work (when you reach Phase 4.3)
-cd templates/analytics-dashboard/frontend  # or your chosen template
-npm install
-
-# For Python helper scripts
-python -m venv .venv
-source .venv/bin/activate
-pip install stripe supabase notion-client python-dotenv requests
-```
-
-### Step 4: Start the Co-CEO Process
+### Step 3: Start Building!
 
 **For buildersuite-claude:**
 ```bash
-# Open CLAUDE.md or CLAUDE_Reserve.md in Claude Code
+# Open the starting document in Claude Code
 claude CLAUDE_Reserve.md
 ```
 
 **For buildersuite-hybrid:**
 ```bash
-# Start with Claude Code for Phases 0-1.5
+# Start with Claude Code for creative phases
 claude CLAUDE_Reserve.md
-
-# After Phase 1.5, switch to Kimi Code CLI
-kimi KIMI_Reserve.md
+# (After Phase 1.5, you'll switch to Kimi Code CLI)
 ```
 
 **For buildersuite-glm:**
 ```bash
-# Start with Kimi Code CLI for Phases 0-4.2
+# Start with Kimi Code CLI
 kimi AGENTS_Reserve.md
-
-# After Phase 4.2, switch to GLM-5
-# (Using your GLM-5 harness of choice)
+# (After Phase 4.2, you'll switch to GLM-5)
 ```
 
-### Step 5: Follow the Process
+The AI will guide you through each phase. Your main job is to:
+- Review what it creates
+- Make decisions when asked
+- Approve before moving to the next phase
 
-The Co-CEO will guide you through each phase. Key things to know:
+That's it! The AI handles the implementation—you focus on steering the direction.
 
-1. **Have your Overall Concept ready**: A document describing your SaaS idea
-2. **Be prepared to make decisions**: Some phases require your input (naming, template selection)
-3. **Let agents do their work**: The Co-CEO spawns specialized agents; don't interrupt them
-4. **Use helper scripts**: Located in `.shared/scripts/co-ceo/` or `.claude/scripts/co-ceo/`
+### What to Expect
+
+**Total time investment**: 8-16 hours spread over several sessions
+- **First session** (3-5 hours): Concept, brand, and marketing strategy
+- **Second session** (2-4 hours): UX design and technical planning
+- **Third session** (3-5 hours): Template selection and service setup
+- **Fourth session** (4-8 hours): Code implementation and testing
+
+**What you'll have at the end**:
+- ✅ A fully functional SaaS application
+- ✅ Database with security configured
+- ✅ User authentication and payment processing
+- ✅ Professional brand identity
+- ✅ Complete marketing strategy with positioning, keywords, and content plan
+- ✅ Landing page copy and email sequences
+- ✅ 6-month SEO content calendar
+
+**No coding experience required.** The AI writes all the code. You just make the strategic decisions.
 
 ---
 
 ## Getting API Keys
 
-The Co-CEO process requires several API keys. Here's how to obtain each:
+Don't worry if this sounds technical—getting API keys is like creating accounts on websites. The AI will guide you through this in Phase 0, but here's what you'll need:
 
-### Required Services
+### Required Services (You Need These)
 
-#### 1. Supabase (Database, Auth, Storage)
+#### 1. Supabase - Your Database and User Management
 
-**What it's for**: PostgreSQL database, authentication, and file storage for your SaaS
+**What it does**: Stores your data, handles user logins, manages file uploads
 
-**How to get it**:
+**Cost**: Free for MVPs (500MB database, 1GB storage)
+
+**How to get it** (5 minutes):
 1. Go to [supabase.com](https://supabase.com) and sign up
-2. Create a new project
-3. Get credentials from Project Settings → API:
-   - `SUPABASE_URL` (Project URL)
-   - `SUPABASE_ANON_KEY` (anon/public key)
-   - `SUPABASE_SERVICE_ROLE_KEY` (service_role key - keep secret!)
-4. Get management token from [supabase.com/dashboard/account/tokens](https://supabase.com/dashboard/account/tokens):
-   - `SUPABASE_ACCESS_TOKEN`
-5. Get your Organization ID from the URL when viewing your organization
+2. Click "New Project" and choose a name
+3. Go to Project Settings → API and copy:
+   - Project URL
+   - `anon` key (public key)
+   - `service_role` key (secret key - keep this safe!)
+4. Go to [supabase.com/dashboard/account/tokens](https://supabase.com/dashboard/account/tokens) to get your access token
+5. Note your Organization ID from the URL when viewing your organization
 
-**Cost**: Free tier available (500MB database, 1GB storage)
+**Why you need it**: Every SaaS needs a database. Supabase gives you a professional database with security built-in.
 
 ---
 
-#### 2. Stripe (Payments & Billing)
+#### 2. Stripe - Payment Processing
 
-**What it's for**: Processing payments, subscriptions, and usage-based billing
+**What it does**: Handles credit card payments and subscriptions for your SaaS
 
-**How to get it**:
+**Cost**: Free to set up, you pay 2.9% + 30¢ per transaction
+
+**How to get it** (5 minutes):
 1. Go to [stripe.com](https://stripe.com) and create an account
-2. Complete verification (required for live keys)
-3. Get test keys from Developers → API keys:
-   - `STRIPE_PUBLISHABLE_KEY` (starts with `pk_test_`)
-   - `STRIPE_SECRET_KEY` (starts with `sk_test_`)
-4. For production, toggle "Test mode" off and get live keys (starts with `pk_live_` / `sk_live_`)
+2. Go to Developers → API keys
+3. Copy your test keys (they start with `pk_test_` and `sk_test_`)
+4. Later, when you're ready to launch, you'll get live keys
 
-**Cost**: Pay per transaction (2.9% + 30¢ for cards)
+**Why you need it**: If you want to charge for your product, Stripe is the easiest and most professional way to accept payments.
 
 ---
 
-#### 3. Notion (Documentation & Project Management)
+### Optional Services (Nice to Have)
+
+#### 3. Notion - Project Documentation
 
 **What it's for**: Optional - syncing project documentation to Notion
 
@@ -321,13 +487,13 @@ The Co-CEO process requires several API keys. Here's how to obtain each:
 4. Copy the "Internal Integration Token"
 5. Share your database/page with the integration
 
-**Cost**: Free personal plan, paid teams plans available
+**Cost**: Free personal plan available
 
 ---
 
-#### 4. Porkbun (Domain Checking)
+#### 4. Porkbun - Domain Availability Checking
 
-**What it's for**: Checking domain availability during naming phase
+**What it's for**: Automatically checks if domain names are available during the naming phase
 
 **How to get it**:
 1. Go to [porkbun.com](https://porkbun.com) and create an account
@@ -335,56 +501,58 @@ The Co-CEO process requires several API keys. Here's how to obtain each:
 3. Enable API access
 4. Generate API key and secret
 
-**Cost**: Free API access, pay for domain registration (~$9/year)
+**Cost**: Free API access, domains cost ~$9/year if you decide to buy one
 
-**Alternative**: If you don't want to use Porkbun, you can skip this and manually check domains
-
----
-
-### Optional Services
-
-#### 5. Context7 (Documentation Access)
-
-**What it's for**: Fetching up-to-date library documentation for technical phases
-
-**How to get it**:
-1. Go to [context7.com](https://context7.com)
-2. Sign up for an account
-3. Get API key from your dashboard
-
-**Cost**: Free tier available
+**Skip this if**: You're fine manually checking domain availability on GoDaddy or Namecheap
 
 ---
 
-#### 6. Browserless (Web Scraping)
+#### 5. Google Ads API - Keyword Search Volume Data
 
-**What it's for**: Headless browser automation for testing
-
-**How to get it**:
-1. Go to [browserless.io](https://browserless.io)
-2. Create an account
-3. Get API key from dashboard
-
-**Cost**: Free tier available (limited hours)
-
----
-
-#### 7. Google Ads (Marketing)
-
-**What it's for**: Optional - Google Ads integration for marketing phases
+**What it's for**: Gets real search volume and cost-per-click data for keyword research (used by the Keyword Research Generator agent)
 
 **How to get it**:
 1. Have a Google Ads account
 2. Apply for Developer Token (requires Google Ads manager account)
 3. Approval can take several days
 
-**Cost**: Free to obtain, pay for ads if you use them
+**Cost**: Free to obtain, you only pay if you run ads
+
+**Skip this if**: The agents will use Google Trends (free, no API key needed) as a fallback for keyword volume estimates
 
 ---
 
-### Environment File Template
+### What About Google Trends?
 
-Your `.env` file should look like this:
+Good news! The **Keyword Research Generator** agent also uses **Google Trends** (via pytrends) which requires **no API key**. It provides:
+- Trend velocity (is interest growing or declining?)
+- Rising search queries
+- Related search terms
+
+This works as a free alternative or complement to Google Ads data.
+
+---
+
+### Summary: What's Actually Required?
+
+**Must have** (Phase 0 will block without these):
+- ✅ Supabase account + keys
+- ✅ Stripe account + keys
+
+**Nice to have** (agents will work around if missing):
+- 📋 Notion (for documentation sync)
+- 🌐 Porkbun (for domain checking)
+- 📊 Google Ads API (for precise search volumes)
+
+**Built-in and free** (no setup needed):
+- ✨ Google Trends via pytrends (keyword trends and volume estimates)
+- ✨ Autosuggest scraping (long-tail keyword discovery)
+
+---
+
+### Your .env File
+
+After getting your API keys, your `.env` file should look like this:
 
 ```bash
 # ============================================
@@ -634,91 +802,120 @@ my-saas-project/
 
 ## FAQ
 
-### Which variation should I choose?
+### Do I really not need to know how to code?
 
-**Choose buildersuite-claude if:**
-- You want the simplest, most streamlined experience
-- You're already using Claude Code
-- Budget is not your primary concern
-- You want best-in-class creative output
+**Short answer**: No coding skills required!
 
-**Choose buildersuite-hybrid if:**
-- You want Claude's creative excellence
-- You want more cost-effective implementation
-- You don't mind switching tools at Phase 1.5
-- You want a balanced approach
+**Long answer**: The AI agents write all the code. Your job is to make strategic decisions:
+- What should the product do?
+- Who is it for?
+- What should it be called?
+- Which features are most important?
 
-**Choose buildersuite-glm if:**
-- Budget is a primary concern
-- You're comfortable with multiple tools
-- You want excellent software engineering at lower cost
-- You're familiar with GLM-5 and Kimi
+If you can use Google Docs and make decisions about your business, you can use Buildersuite.
 
-### Can I switch variations mid-project?
+---
 
-Not easily. The variations have different agent definitions and entry points. Choose your variation at the start based on your preferred workflow.
+### Which version should I choose if I'm just starting out?
 
-### Do I need to know how to code?
+Start with **buildersuite-claude**. It's the simplest to set up (just one tool) and provides the smoothest experience. Yes, it costs more (~$50-100/month), but when you're validating an idea, your time is more valuable than the cost difference.
 
-Basic understanding helps, but the Co-CEO process is designed to be accessible. The agents do the coding; you provide direction and make decisions.
+Once you're comfortable with the process, you can explore the hybrid or GLM versions for cost savings.
 
-### How long does the full process take?
+---
 
-- **Total time**: 8-16 hours spread over several sessions
-- **Phase 0-1**: 3-5 hours (one session)
-- **Phase 2-3**: 2-4 hours (one session)
-- **Phase 4**: 3-5 hours (one session)
-- **Phase 5-7**: 4-8 hours (one or more sessions)
+### How long until I can show my MVP to users?
 
-### Can I customize the templates?
+**Realistic timeline**: 1-2 weeks of part-time work (8-16 hours total)
 
-Yes! The templates are starting points. The brand personalization agent customizes them with your brand, and you can further customize during and after the Co-CEO process.
+- **Week 1, Session 1** (3-5 hours): Brand, concept, and marketing strategy complete
+- **Week 1, Session 2** (2-4 hours): UX design and technical planning done
+- **Week 2, Session 3** (3-5 hours): Services connected, template customized
+- **Week 2, Session 4** (4-8 hours): Full application built and tested
 
-### What if an agent gets stuck?
+After that, you have a working MVP you can deploy and share with users.
 
-The Co-CEO process has built-in error handling:
-1. Agent attempts fix (Attempt 1)
-2. Agent tries alternative approach (Attempt 2)
-3. Agent makes final attempt with fresh perspective (Attempt 3)
-4. If still stuck, escalates to Co-CEO (you)
+---
 
-### Is this production-ready?
+### What's included in the "marketing planning" exactly?
 
-The templates include production considerations like:
-- Row Level Security policies
-- Stripe webhook handling
-- Error boundaries
-- Build verification
+You get a complete go-to-market foundation:
 
-However, you should still:
-- Review all generated code
-- Run security audits
-- Test thoroughly
-- Consider professional security review for sensitive applications
+1. **Positioning Strategy**: How to position your product in the market (using 8 proven frameworks)
+2. **Keyword Research**: What your customers are searching for, with search volumes
+3. **Lead Generation Strategy**: How to capture qualified leads (with magnet specs and nurture sequences)
+4. **Landing Page Copy**: Professional direct response copy for your homepage
+5. **Brand Voice Guidelines**: Consistency rules for all your messaging
+6. **6-Month Content Calendar**: SEO content strategy with topics prioritized
 
-### What AI tools can I use with GLM-5?
+This is work that would typically cost $10,000-$25,000 from a marketing agency.
 
-GLM-5 works with various harnesses:
-- **Roo Code**: VS Code extension
-- **OpenCode**: CLI tool
-- **Kilo Code**: VS Code extension
-- **Kimi Code CLI**: Also works with GLM-5
-- **Cline**: VS Code extension
+---
 
-### How much does this cost to run?
+### Can I customize the templates after they're generated?
 
-**Required services**:
-- Supabase: Free tier (500MB, 1GB storage)
-- Stripe: Free to set up, pay per transaction
-- Notion: Free personal plan
-- Porkbun: Free API, ~$9/year per domain
+Absolutely! The templates are professional starting points that get customized with your brand during Phase 4. After that, you can continue customizing them—they're just standard Next.js/React code.
 
-**AI tools** (varies by usage):
-- Claude Code: Subscription required
-- Kimi Code CLI: Uses your Kimi API credits
-- GLM-5: Varies by provider/harness
+The AI sets up the foundation; you can tweak and extend as needed.
 
-**Total minimum**: Can be $0-50/month depending on AI tools and usage
+---
+
+### What if I get stuck or something breaks?
+
+The process has built-in error handling:
+
+1. **Agents retry automatically**: If an agent hits an issue, it tries 3 times with different approaches
+2. **Quality gates**: Phase 3 and Phase 5 check that everything fits together
+3. **Build verification**: Phase 6 includes build and test verification before completion
+
+If something still doesn't work, the AI will explain the issue and suggest solutions. You're never left stranded.
+
+---
+
+### Is the code production-ready or just a prototype?
+
+The code is production-ready with:
+- ✅ Database security (Row Level Security policies)
+- ✅ User authentication (via Supabase)
+- ✅ Payment processing (Stripe integration with webhooks)
+- ✅ Error handling and boundaries
+- ✅ Build verification and tests
+
+However, before going live with real users, you should:
+- Review the generated code
+- Test with real users in a staging environment
+- Consider a security audit if handling sensitive data
+
+Think of it as 80-90% done. You still need to polish, test, and validate with users.
+
+---
+
+### How much does this cost to run each month?
+
+**Infrastructure** (required):
+- Supabase: **$0** (free tier covers most MVPs)
+- Stripe: **$0** + 2.9% per transaction
+- **Total**: $0-$10/month for small MVPs
+
+**AI Tools** (pick one):
+- buildersuite-claude: ~$50-100/month
+- buildersuite-hybrid: ~$30-60/month
+- buildersuite-glm: ~$15-30/month
+
+**Realistic total for getting started**: $20-$110/month depending on which version you choose.
+
+---
+
+### Can I use this for any kind of SaaS?
+
+The five included templates cover most common SaaS patterns:
+- **Analytics Dashboard**: For data visualization SaaS
+- **Content Creator**: For content generation/management platforms
+- **Digital Download**: For selling digital products
+- **Productivity Tool**: For task/project management SaaS
+- **Utility Processor**: For file processing/conversion tools
+
+If your idea fits one of these patterns (and most SaaS ideas do), you're good to go. If you need something completely different, the templates are customizable.
 
 ---
 
@@ -743,4 +940,28 @@ For issues, questions, or discussions:
 
 ---
 
-**Ready to build your SaaS MVP? Choose your variation and start with Phase 0!**
+## Ready to Build Your MVP?
+
+You now understand what Buildersuite offers:
+- ✅ Complete technical implementation (database, auth, payments, code)
+- ✅ Professional marketing planning (positioning, keywords, copy, content strategy)
+- ✅ Data-driven insights (Google Ads API, Google Trends, autosuggest)
+- ✅ Autonomous AI agents that do the work while you make decisions
+
+### Next Steps:
+
+1. **Decide which version to use** (buildersuite-claude recommended for beginners)
+2. **Copy the folder** to start your project
+3. **Get your API keys** (Supabase and Stripe required, others optional)
+4. **Launch Phase 0** and let the AI guide you through the process
+
+### What You'll Have in 1-2 Weeks:
+
+- A fully functional SaaS application ready to deploy
+- Professional brand identity and marketing materials
+- Complete go-to-market strategy with content calendar
+- Real users testing your MVP and giving feedback
+
+**No coding experience needed. You drive the vision—AI handles the implementation.**
+
+Choose your variation and start building!

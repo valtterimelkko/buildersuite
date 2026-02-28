@@ -18,6 +18,7 @@ This repository contains **three variations** of the same core framework, design
 
 - [Who This Is For](#who-this-is-for)
 - [What Makes Buildersuite Different?](#what-makes-buildersuite-different)
+- [Frontend Templates](#frontend-templates)
 - [The Autonomous Marketing Planning Process](#the-autonomous-marketing-planning-process)
 - [What is the Co-CEO Process?](#what-is-the-co-ceo-process)
 - [The Three Variations Explained](#the-three-variations-explained)
@@ -66,6 +67,55 @@ The autonomous agents don't just guess—they pull real market data:
 - **Google Trends** for trend velocity and rising search queries
 - **Autosuggest mining** for long-tail keyword opportunities
 - **Domain availability** checking via Porkbun API
+
+---
+
+## Frontend Templates
+
+Buildersuite includes **4 production-ready frontend templates** designed for the most common types of SaaS products. Each template includes both a **landing page** and an **authenticated dashboard experience**, ready to be connected to your backend and authentication system.
+
+### Why These Templates Matter
+
+The core idea behind these templates is **speed to market**:
+- ✅ **Deploy Fast**: Get your frontend live quickly with professional, tested code
+- ✅ **Easy Backend Integration**: Connect to Supabase authentication and your API effortlessly
+- ✅ **Google Sign-Up Ready**: Pre-configured OAuth flows for Google authentication in signup/login pages
+- ✅ **Common SaaS Patterns**: Covering 90% of SaaS product types you might want to build
+
+### Preview the 4 Templates
+
+You can view each template's landing page and dashboard to see which style fits your product:
+
+#### 1. Analytics SaaS Template
+Perfect for data visualization, analytics dashboards, and metrics tracking SaaS products.
+- 🔗 [Landing Page](https://analytics.letsautomate.work/)
+- 🔗 [Dashboard](https://analytics.letsautomate.work/dashboard)
+
+#### 2. Productivity Tool SaaS Template
+Ideal for task management, productivity tools, and workflow automation platforms.
+- 🔗 [Landing Page](https://utility.letsautomate.work/)
+- 🔗 [Dashboard](https://utility.letsautomate.work/dashboard)
+
+#### 3. Content Creator SaaS Template
+Great for content generation, content management, and creator tools.
+- 🔗 [Landing Page](https://content.letsautomate.work/)
+- 🔗 [Dashboard](https://content.letsautomate.work/dashboard)
+
+#### 4. Digital Download SaaS Template
+Best for selling digital products, downloads, and digital goods marketplaces.
+- 🔗 [Landing Page](https://digital.letsautomate.work/)
+- 🔗 [Dashboard](https://digital.letsautomate.work/dashboard)
+
+### After Implementation: Personalizing Your Frontend
+
+**Important**: These templates provide the structural foundation, but you'll need to personalize them for your specific product:
+
+1. **Phase 6 Completion**: After the AI completes your full frontend and backend implementation (Phase 6), the templates will be connected to your backend but will still use generic content
+2. **Personalization Step**: Ask an AI agent to personalize the frontend with your project's specific content, keywords, and messaging (this is not done automatically in the current version)
+3. **Continued Development**: You can then continue developing the frontend further from this template foundation—preferably with feedback from real users
+4. **Professional Polish** (Optional): For a more authentic and professional look beyond the templates, consider using tools like [Kombai](https://kombai.com/) to create custom designs from your Figma mockups (we have no affiliation with Kombai, but it's excellent for design-to-code conversion)
+
+These templates give you a solid, tested foundation so you can focus on building your unique features rather than starting from scratch.
 
 ---
 
@@ -908,20 +958,22 @@ Think of it as 80-90% done. You still need to polish, test, and validate with us
 
 ### Can I use this for any kind of SaaS?
 
-The five included templates cover most common SaaS patterns:
-- **Analytics Dashboard**: For data visualization SaaS
-- **Content Creator**: For content generation/management platforms
-- **Digital Download**: For selling digital products
-- **Productivity Tool**: For task/project management SaaS
-- **Utility Processor**: For file processing/conversion tools
+The included templates cover the most common SaaS patterns:
+- **Analytics Dashboard**: For data visualization, analytics, and metrics tracking SaaS
+- **Productivity Tool**: For task/project management, workflow automation, and productivity SaaS
+- **Content Creator**: For content generation, content management, and creator tools
+- **Digital Download**: For selling digital products, downloads, and digital goods
+- **Utility Processor**: For file processing, conversion tools, and data transformation (variant of Productivity Tool)
 
-If your idea fits one of these patterns (and most SaaS ideas do), you're good to go. If you need something completely different, the templates are customizable.
+You can [preview all templates live](#frontend-templates) to see which style fits your product best.
+
+If your idea fits one of these patterns (and most SaaS ideas do), you're good to go. If you need something completely different, the templates are fully customizable starting points.
 
 ---
 
 ## License
 
-This project is provided as-is for educational and development purposes. Please review and comply with the terms of service for all third-party services (Supabase, Stripe, etc.) used in your projects.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 

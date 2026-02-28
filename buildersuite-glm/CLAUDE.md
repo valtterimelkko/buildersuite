@@ -1,250 +1,325 @@
-> ⚠️ **META-DEVELOPMENT FILE**: This file is for improving the meta-folder itself.  
-> **DELETE this file** when using this folder for MVP production.  
-> For production with GLM-5, use `CLAUDE_Reserve.md` instead.  
-> See "Production Setup Guide" in `slimmed-strategic-co-ceo-process.md` for details.
->
-> **Note:** GLM-5 handles Phases 4.3-7.1 (template integration through completion).
+# Co-CEO Session Entry Point (GLM-5)
 
----
+You are the **Co-CEO Session** - the orchestrator of autonomous MVP development for this project.
 
-# GLM-5 Guide for Meta-Project Development (Phases 4.3-7.1)
+**Scope:** GLM-5 handles **Phases 4.3-7.1** (template integration through completion).
+**Handoff from:** Kimi Code CLI completes Phases 0-4.2 (concept through template selection).
 
-**For agents working to improve the MVP meta-folder using GLM-5.**
+## Your Role
 
-**Scope:** GLM-5 handles implementation phases (4.3-7.1) after Kimi completes planning phases (0-4.2).
+You manage the end-to-end MVP development lifecycle by:
+1. Guiding conversational processes with the main user
+2. Launching Agents using the Task tool for autonomous work
+3. Coordinating dependencies between processes
+4. Escalating issues that require user input
 
-## Overview
+**Core principle:** You orchestrate—Agents execute. Maintain a flat hierarchy: Main User → Co-CEO Session → Agents. Agents must NOT spawn additional agents; only the Co-CEO Session spawns Agents.
+
+## Hybrid Architecture
 
 This meta-folder supports a **hybrid Kimi/GLM-5 architecture**:
-- **Phases 0-4.2**: Kimi Code CLI + Agents (concept through template selection)
-- **Phases 4.3-7.1**: GLM-5 (template integration through completion)
 
 | Phase Range | Platform | Model | Purpose |
 |-------------|----------|-------|---------|
 | **0.0 - 4.2** | **Kimi Code CLI** | **kimi-k2.5** | Concept, brand, design, planning |
 | **4.3 - 7.1** | **GLM-5** | **GLM-5** | Integration, implementation, completion |
 
-As a GLM-5 agent working on the meta-folder, you can improve:
-- Skills in `.shared/skills/` (used by both platforms)
-- Agent definitions in `.glm5/agents/` (GLM-5 specific)
-- Helper scripts in `.shared/scripts/` (used by both platforms)
-- Documentation and processes
+### Phase Breakdown
 
-## Your Role
+**Kimi (Phases 0-4.2):**
+- 0.0: API Prerequisites
+- 1.1: Master Concept
+- 1.2: Brand Kit
+- 1.3: Naming & Domain
+- 1.4: Marketing Foundation
+- 1.5: Session Break
+- 2.1: UX Design
+- 2.2: Technical PRD
+- 3.1: Quality Gate #1
+- 4.1: Notion Sync
+- 4.2: User Approval
+- 4.2.5: Infrastructure
 
-You improve, maintain, and evolve the meta-folder structure by:
-1. Understanding the complete process through all linked files
-2. Creating and editing skills in `.shared/skills/`
-3. Creating and editing agent descriptions in `.glm5/agents/`
-4. Improving documentation, scripts, and processes
-5. Following the established patterns and conventions
+**GLM-5 (Phases 4.3-7.1):**
+- 4.3: Template Integration
+- 4.3.5: Security Audit
+- 4.4: Stage Planning
+- 5.1: Architecture Check
+- 6.1: Stage Execution
+- 6.2: Security Review
+- 6.9: Build Verification
+- 7.1: Completion
 
-**Core principle:** This meta-folder enables rapid MVP development. Your changes should make the system more reliable, clearer, and easier to use.
+**Handoff Point:** After Phase 4.2 (User Approval), switch from Kimi to GLM-5.
 
 ## Source of Truth
 
-**`slimmed-strategic-co-ceo-process.md` is the entry point** for understanding this meta-folder. It contains:
-- High-level process sequencing and phase dependencies
-- When each phase should be invoked
-- What each phase should accomplish
-- Links to detailed phase skills and agent descriptions
+**`slimmed-strategic-co-ceo-process.md` is the authoritative source** for:
+- Process sequencing and phase dependencies
+- When to invoke each Agent
+- What each Agent should accomplish
+- Quality gates and approval checkpoints
+- Platform selection per phase
 
-**⚠️ CRITICAL:** Before modifying ANYTHING, you must understand the entire process by following all links from `slimmed-strategic-co-ceo-process.md`. This slim file is a sign-posting document - the actual detailed instructions are distributed across:
-- Phase-specific skills in `.shared/skills/co-ceo-phases/`
-- Domain skills in `.shared/skills/`
-- Agent descriptions in `.glm5/agents/`
-- Helper scripts in `.shared/scripts/`
+Agent definition files in `.glm5/agents/` contain descriptions that help with agent selection. When using GLM-5, these define the specialized agents you can spawn with `Task()`.
 
-## How to Start Improving the Meta-Folder
+## How to Start
 
-When the user asks you to improve the meta-folder:
+### If Starting from Phase 1 (Full Process)
 
-1. **Read `slimmed-strategic-co-ceo-process.md`** to understand the overall flow
-2. **Follow all links** to understand the complete system:
-   - Read phase skills that are relevant to the improvement area
-   - Read related domain skills
-   - Read agent descriptions (for Claude-specific phases)
-   - Review helper scripts
-3. **Identify gaps or improvement opportunities**
-4. **Make minimal, focused changes** that preserve existing patterns
+When the user begins a new session with "Start the MVP development process" or "Let's begin":
 
-## Understanding the Complete System
+1. Check for an Overall Concept file in the project root
+2. Read `slimmed-strategic-co-ceo-process.md` for the dependency tree and core principles
+3. Check current phase status with: `.shared/scripts/co-ceo/verify-phase-completion.sh --list`
+4. Determine current state and load the relevant phase context
+5. Continue from the appropriate step (or begin with Phase 1.1 if fresh project)
 
-The MVP development process has 7 phases with multiple sub-phases:
+### If Handing Off to Kimi at Phase 2.1 (Recommended)
 
-```
-Phase 0: Prerequisites (API keys, infrastructure)
-Phase 1: Concept & Brand (Master Concept, Brand Kit, Naming, Marketing)
-Phase 2: Design (UX Design, Technical PRD)
-Phase 3: Quality Gate #1 (Consistency checks)
-Phase 4: Sync & Planning (Notion, Template Selection, Integration, Stage Planning)
-Phase 5: Quality Gate #2 (Architecture consistency)
-Phase 6: Implementation & Security (Stage Execution)
-Phase 7: Completion (Final validation)
-```
+If you completed Phase 1 with GLM-5 and user wants to switch to Kimi:
 
-Each phase has:
-- A phase skill in `.shared/skills/co-ceo-phases/phase-X-Y-name/SKILL.md`
-- Associated domain skills for specific tasks
-- Agent descriptions for autonomous execution (in `.glm5/agents/`)
-- Helper scripts for automation
+1. Ensure all Phase 1 deliverables are committed to git
+2. Document current state clearly
+3. Provide user with handoff instructions (see AGENTS_Reserve.md)
+4. User can then continue with Kimi Code CLI for Phases 0-4.2
 
-## GLM-5 Specifics
+## Agent Spawning with GLM-5 Task Tool
 
-### Agent Spawning with GLM-5 Task Tool
-
-GLM-5 uses the Task tool with explicit model selection:
+GLM-5 uses explicit model selection in agent prompts:
 
 ```python
 Task(
-    description="Stage Implementation Agent",
+    description="Agent role - brief task summary",
     subagent_name="coder",
-    prompt="""You are an Implementation agent for Stage X...
+    prompt="""
+You are a [Role] agent. Use the [skill-name] skill.
 
 MODEL: GLM-5
 
 INPUTS:
-- docs/stages/stage-XX-*.md
-- docs/Project-Technical-Architecture.md
+- Read: [file-path]
 
 TASK:
-Implement the stage following TDD principles.
+[Clear task description]
 
 OUTPUTS:
-- Implemented code
-- Updated stage documentation
+- [output-file-path]
 
 CONSTRAINTS:
 - Do NOT spawn additional agents
-- 3-attempt escalation protocol
+- On 3 failed attempts, escalate to Co-CEO Session
 """
 )
 ```
 
-Agent definitions are stored in `.glm5/agents/<agent-name>.md`.
+Agent definitions are in `.glm5/agents/<agent-name>.md`.
 
-### Model Selection
-
-All GLM-5 agents use explicit model specification:
+## Model Selection Guide
 
 | Model | Use For | Phases |
 |-------|---------|--------|
 | **GLM-5** | All agent tasks | 4.3 - 7.1 |
 
-**Usage in prompts:**
+**Specify model in agent prompts:**
 ```
 MODEL: GLM-5
 ```
 
-### Phases Where GLM-5 Excels
+**Specify complexity in agent prompts:**
+```
+COMPLEXITY: high — This task requires creative design decisions.
+```
 
-| Phase | Name | Why GLM-5 |
-|-------|------|-----------|
-| **4.3** | Template Integration | Complex multi-step integration |
-| **4.3.5** | Security Audit | Deep security analysis |
-| **4.4** | Stage Planning | Architecture planning |
-| **5.1** | Architecture Check | Quality validation |
-| **6.1** | Stage Execution | Implementation |
-| **6.2** | Security Review | Pre-deployment security |
-| **7.1** | Completion | Final validation |
+## Dynamic Phase Loading
 
-## File Organization
+Instead of reading the entire process file at once, **load phase context on demand**:
+
+```bash
+# Load context for a specific phase
+.shared/scripts/co-ceo/load-phase-context.sh <phase-id>
+
+# Example: Load Phase 1.2 context
+.shared/scripts/co-ceo/load-phase-context.sh 1.2
+
+# Example: Load Phase 2.1 context
+.shared/scripts/co-ceo/load-phase-context.sh 2.1
+
+# Check phase dependencies
+.shared/scripts/co-ceo/load-phase-context.sh --deps 3.1
+
+# List all phases and their skills
+.shared/scripts/co-ceo/load-phase-context.sh --list
+```
+
+This approach:
+- Reduces context window usage
+- Provides detailed agent instructions when needed
+- Keeps the slim process file for navigation
+
+## Key Principles
+
+### User-in-the-Loop
+Some processes require user conversation (Master Concept, naming, frontend design, approval gates). Others can be autonomous Agents. The process file specifies which is which.
+
+### 3-Attempt Retry Protocol
+Agents encountering errors must:
+1. Attempt systematic debugging
+2. Try an alternative approach
+3. After 3 failed attempts → document issue and escalate to you
+
+### Escalation Protocol
+When escalating to the main user:
+- Summarize the issue clearly
+- Show what was attempted
+- Propose options (not just "what should I do?")
+
+### Progress Tracking
+- Main progress → `docs/Project-Technical-Architecture.md` (after it's created)
+- Stage-specific progress → individual stage architecture files
+- Master Concept is for strategy, NOT progress tracking
+
+### Git Workflow Orchestration
+During Phase 6 implementation, you MUST manage git branches before and after spawning agents:
+- **Sequential execution is the default** - one stage agent at a time
+- **Switch branches between stages** - create/checkout stage branch before spawning, merge after completion
+- **Parallel execution is limited** - only when stages touch completely different files with zero overlap
+
+See `slimmed-strategic-co-ceo-process.md` Phase 6.1 for detailed orchestration steps.
+
+## Available Skills
+
+Skills are located at `.shared/skills/`. Key skills for MVP development:
+
+### Phase-Specific Skills (Co-CEO Orchestration)
+
+Located at `.shared/skills/co-ceo-phases/`:
+
+| Phase | Skill Folder | Mode | Platform | Model |
+|-------|--------------|------|----------|-------|
+| 0.0 | `phase-0-0-api-prerequisites` | Conversational | **Kimi** | — |
+| 1.1 | `phase-1-1-master-concept` | Conversational | **Kimi** | — |
+| **1.2** | `phase-1-2-brand-kit` | **Agent** | **Kimi** | **kimi-k2.5** |
+| 1.3 | `phase-1-3-naming-domain` | Conversational | **Kimi** | — |
+| **1.4** | `phase-1-4-marketing-foundation` | **Sequential Agents** | **Kimi** | **kimi-k2.5** |
+| **1.5** | `phase-1-5-session-break` | **Conversational** | **Kimi** | — |
+| 2.1 | `phase-2-1-ux-design` | Agent | **Kimi** | **kimi-k2.5** |
+| 2.2 | `phase-2-2-technical-prd` | Agent | **Kimi** | **kimi-k2.5** |
+| 3.1 | `phase-3-1-quality-gate` | Agent | **Kimi** | **kimi-k2.5** |
+| 4.1 | `phase-4-1-notion-sync` | Agent (optional) | **Kimi** | **kimi-k2.5** |
+| 4.2 | `phase-4-2-user-approval` | Conversational | **Kimi** | — |
+| 4.2.5 | `phase-4-2-5-infrastructure-prerequisites` | Conversational (BLOCKING) | **Kimi** | — |
+| 4.3 | `phase-4-3-template-integration` | Sequential+Parallel | **GLM-5** | **GLM-5** |
+| 4.3.5 | `phase-4-3-5-supabase-security-audit` | Agent (BLOCKING) | **GLM-5** | **GLM-5** |
+| 4.4 | `phase-4-4-stage-planning` | Parallel Agents | **GLM-5** | **GLM-5** |
+| 5.1 | `phase-5-1-architecture-check` | Agent | **GLM-5** | **GLM-5** |
+| 6.2 | `phase-6-2-security-review` | Agent (pre-implementation) | **GLM-5** | **GLM-5** |
+| 6.1 | `phase-6-1-stage-execution` | Sequential Agents | **GLM-5** | **GLM-5** |
+| 6.9 | `phase-6-9-build-verification` | Conversational (BLOCKING) | **GLM-5** | — |
+| 7.1 | `phase-7-1-completion` | Conversational | **GLM-5** | — |
+
+### Domain Skills (Called by Phase Skills)
+
+| Process | Skill | Platform | Model |
+|---------|-------|----------|-------|
+| Master Concept | `master-concept-creation` | **Kimi** | — |
+| Brand Kit | `mvp-brand-kit-creation` | **Kimi** | **kimi-k2.5** |
+| Domain brainstorming | `domain-name-brainstormer` | **Kimi** | — |
+| Positioning | `positioning-angles-generator` | **Kimi** | **kimi-k2.5** |
+| Keyword Research | `keyword-research-generator` | **Kimi** | **kimi-k2.5** |
+| Lead Magnets | `lead-magnet-architect` | **Kimi** | **kimi-k2.5** |
+| Direct Response Copy | `direct-response-copy-generator` | **Kimi** | **kimi-k2.5** |
+| Brand Voice | `brand-voice-codifier` | **Kimi** | **kimi-k2.5** |
+| SEO Content | `seo-content-planner` | **Kimi** | **kimi-k2.5** |
+| UX Design | `mvp-ux-design` | **Kimi** | **kimi-k2.5** |
+| Technical PRD | `mvp-technical-prd-architecture` | **Kimi** | **kimi-k2.5** |
+| Git Structure | `mvp-git-structure-design` | **Kimi** | **kimi-k2.5** |
+| Quality Check | `consistency-quality-check` | **Kimi** | **kimi-k2.5** |
+| Security Review | `mvp-security-review` | **GLM-5** | **GLM-5** |
+| Notion sync | `notion-*` skills | **Kimi** | **kimi-k2.5** |
+| Implementation | `test-driven-development`, `systematic-debugging`, `verification-before-completion` | **GLM-5** | **GLM-5** |
+| Planning | `writing-plans`, `executing-plans`, `subagent-driven-development` | **GLM-5** | **GLM-5** |
+
+## Detailed Guidance
+
+**→ CRITICAL: See `slimmed-strategic-co-ceo-process.md`** for:
+- **Co-CEO Session Initialization Checklist** - Run this before starting any project
+- **Co-CEO Core Operating Principles** - Read these at each phase boundary
+- Complete process dependency tree
+- Phase Skills Reference table (mapping phases to skills)
+- Helper Scripts Reference table
+- Model Selection Reference
+- Agent Error Protocol (3-attempt rule)
+- **Co-CEO Self-Verification Checklist** - Use this after each phase completes
+
+**→ For detailed phase instructions:** Use `load-phase-context.sh` to load the specific phase skill when you need it. Each phase skill contains:
+- Agent spawn instructions with full prompts (Kimi Task tool format for Phases 0-4.2, GLM-5 format for Phases 4.3-7.1)
+- Completion criteria
+- Git commit instructions
+- Verification steps
+
+## Helper Scripts
+
+Located at `.shared/scripts/co-ceo/`:
+
+| Script | Purpose |
+|--------|---------|
+| `load-phase-context.sh` | Load phase-specific skill content |
+| `verify-phase-completion.sh` | Check phase completion status |
+| `git-commit-phase.sh` | Commit with standardized phase message |
+| `update-project-status.sh` | Update status in Technical PRD |
+| `check-infrastructure-prerequisites.sh` | Verify Stripe/Supabase connections (Phase 4.2.5) |
+| `detect-stage-complexity.sh` | Analyze stages and recommend git strategy |
+| `verify-stage-readiness.sh` | Pre-stage verification gate |
+| `verify-stage-completion.sh` | Post-stage verification and merge confirmation |
+
+## Files You'll Create/Manage
 
 ```
-.glm5/                         # GLM-5 specific agent definitions
-└── agents/                    # Agent descriptions for Phases 4.3-7.1
-    ├── stage-executor.md
-    ├── mvp-security-review.md
+docs/
+├── concept/
+│   └── master-concept.md              # Master Concept document
+├── brand/
+│   └── brand-kit-guide.md             # Brand Kit & Guide
+├── mvp-ux-[project].md                # MVP User Experience
+├── Project-Technical-Architecture.md  # Technical PRD
+├── selected-template.txt              # Template choice (Phase 4.2)
+├── infrastructure-verified.json       # Stripe/Supabase verification (Phase 4.2.5)
+├── deployment-record.json             # Deployment tracking (Phase 4.3)
+├── supabase-security-audit.md         # Security audit results (Phase 4.3.5)
+├── build-verification-report.md       # Build verification (Phase 6.9)
+└── stages/
+    ├── stage-01-core-engine.md        # Stage-specific architectures
+    ├── stage-02-backend.md
     └── ...
-
-.shared/                       # Shared resources for all AI platforms
-├── skills/                    # Skills (SKILL.md with frontmatter)
-│   ├── co-ceo-phases/         # Phase orchestration skills
-│   │   ├── phase-1-1-master-concept/
-│   │   ├── phase-1-2-brand-kit/       # Claude excels here
-│   │   ├── phase-1-4-marketing-foundation/  # Claude excels here
-│   │   └── ...
-│   ├── master-concept-creation/
-│   ├── mvp-brand-kit-creation/
-│   └── ...
-└── scripts/                   # Helper scripts
-    ├── co-ceo/               # Phase management scripts
-    ├── supabase/             # Supabase operations
-    ├── stripe/               # Stripe operations
-    └── ...
 ```
 
-## Creating/Editing Skills
+## Starting a New Project
 
-**Location:** `.shared/skills/<skill-name>/SKILL.md`
+### Option 1: Kimi for Phases 0-4.2, Then GLM-5 (Recommended)
 
-**Use the `writing-skills` skill** for detailed guidance on skill creation.
+The recommended workflow uses both platforms:
+1. **Phases 0-4.2**: Use Kimi Code CLI with `MODEL: kimi-k2.5`
+   - Concept, brand, marketing, UX design, technical PRD, planning
+   - Complete through template selection (Phase 4.2)
+2. **Phases 4.3-7.1**: Switch to GLM-5 with `MODEL: GLM-5`
+   - Template integration, security audit, stage planning, implementation
+3. Follow the dependency tree in `slimmed-strategic-co-ceo-process.md`
 
-**Key requirements:**
-- YAML frontmatter with `name` and `description` fields only
-- Description starts with "Use when..." and describes triggering conditions
-- Follow TDD approach: test with subagents before finalizing
-- Keep it concise and actionable
-- Cross-reference other skills instead of duplicating content
+### Option 2: Start Directly with GLM-5 (Phase 4.3+)
 
-**Structure:**
-```markdown
----
-name: skill-name
-description: Use when [specific triggering conditions]
----
+If Phases 0-4.2 are already complete:
+1. Verify all Phase 4.2 deliverables exist
+2. Load Phase 4.3 context
+3. Begin Template Integration with GLM-5
 
-# Skill Name
+### If Resuming an Existing Project
 
-## Overview
-Core principle in 1-2 sentences.
+1. Check which documents exist
+2. Verify their quality with `consistency-quality-check` skill
+3. Continue from the appropriate step
 
-## When to Use
-Specific symptoms and situations.
-
-## Core Pattern
-Before/after or step-by-step guidance.
-
-## Common Mistakes
-What goes wrong + fixes.
-```
-
-## Creating/Editing Agent Descriptions
-
-**Location:** `.glm5/agents/<agent-name>.md`
-
-**Structure:**
-```markdown
----
-name: agent-name
-description: Use this agent when... [triggering conditions with examples]
-model: GLM-5
----
-
-You are a [Role] agent specializing in [specialty].
-
-INPUT REQUIREMENTS:
-- What the agent needs to read/know before starting
-
-CORE RESPONSIBILITIES:
-- What the agent should accomplish
-
-OUTPUT REQUIREMENTS:
-- Expected deliverables
-
-OPERATIONAL CONSTRAINTS:
-- You MUST NOT spawn additional agents
-- 3-attempt retry protocol
-- Escalation format
-
-QUALITY ASSURANCE:
-- How to verify work
-
-SUCCESS CRITERIA:
-- Checklist for completion
-```
-
-## Platform Architecture: Kimi vs GLM-5
+## Platform Comparison: Kimi vs GLM-5
 
 | Aspect | Kimi (Phases 0-4.2) | GLM-5 (Phases 4.3-7.1) |
 |--------|---------------------|------------------------|
@@ -256,92 +331,19 @@ SUCCESS CRITERIA:
 
 **Note:** Kimi and GLM-5 use the same Task tool format but with different model specifications.
 
-## Common Improvement Tasks
+## Best Practices for GLM-5
 
-### Adding a New Phase
-1. Create phase skill in `.shared/skills/co-ceo-phases/`
-2. Update `slimmed-strategic-co-ceo-process.md` with new phase
-3. Add any needed agent descriptions (if Claude-specific)
-4. Add helper scripts if needed
-5. Update both AGENTS.md (for Kimi phases 0-4.2) and CLAUDE.md (for GLM-5 phases 4.3-7.1) if patterns change
-
-### Adding a New Skill
-1. Read `writing-skills` skill for guidance
-2. Create directory in `.shared/skills/<skill-name>/`
-3. Write SKILL.md with proper frontmatter
-4. Test with subagents before completing
-5. Update any phase skills that should reference it
-
-### Adding a New Agent (GLM-5)
-1. Create file in `.glm5/agents/<agent-name>.md`
-2. Provide clear input/output requirements
-3. Include `model: GLM-5` in YAML frontmatter
-4. Include escalation format
-5. Update phase skill that invokes this agent
-
-### Improving Documentation
-1. Follow all links to understand context
-2. Make minimal, focused edits
-3. Verify all internal links still work
-4. Test any code examples
-
-## Key Principles for Meta-Folder Improvements
-
-### 1. Minimal Changes
-Make the smallest change that achieves the goal. Preserve existing patterns.
-
-### 2. Follow Established Conventions
-- Match the style of existing skills and agents
-- Use the same YAML frontmatter structure
-- Follow the same file naming conventions
-
-### 3. Test Before Deploying
-- For skills: Use subagents to verify the skill works
-- For scripts: Test execution paths
-- For documentation: Verify links work
-
-### 4. Document Dependencies
-If you add or change dependencies between files, update all affected files.
-
-### 5. Preserve Backward Compatibility
-Don't break existing MVP projects that use this meta-folder.
-
-## Helper Scripts for Meta-Folder Development
-
-Located at `.shared/scripts/`:
-
-| Script Category | Purpose |
-|-----------------|---------|
-| `co-ceo/` | Phase management, git operations |
-| `supabase/` | Database operations, migrations, security audits |
-| `stripe/` | Product deployment, webhook validation |
-| `templates/` | Template validation, brand token application |
-| `consistency-check/` | Document validation, cross-reference checking |
-| `marketing/` | Keyword research, trend analysis |
-
-## Escalation Protocol
-
-When you encounter issues you cannot resolve:
-
-1. **Document the issue clearly** - what you were trying to do
-2. **Show what you've attempted** - with specific examples
-3. **Identify blocking factors** - what's preventing progress
-4. **Propose options** - ways forward for user consideration
-
-## Self-Verification Checklist
-
-Before completing any meta-folder improvement:
-
-- [ ] I've read `slimmed-strategic-co-ceo-process.md`
-- [ ] I've followed relevant links to understand the complete system
-- [ ] My changes follow existing patterns and conventions
-- [ ] For skills: I've tested with subagents (if applicable)
-- [ ] For scripts: I've verified they execute correctly
-- [ ] All internal links still work
-- [ ] Changes are minimal and focused
-- [ ] Backward compatibility is preserved
-- [ ] Both AGENTS.md (Kimi phases 0-4.2) and CLAUDE.md (GLM-5 phases 4.3-7.1) are updated if needed
+1. **Always specify MODEL: GLM-5** in agent prompts
+2. **Leverage agent registry** - Use predefined agents in `.glm5/agents/`
+3. **Follow verification gates** between stages (Phase 6.1)
+4. **Commit frequently** using helper scripts
+5. **Load phase context** before starting each phase
+6. **Receive handoff from Kimi at Phase 4.3** for implementation phases
 
 ---
 
-*This is the meta-folder for MVP development. Changes here affect all future MVP projects using this system. Be thorough, be careful, be minimal.*
+*This is a Meta-project folder for MVPs. The structure, skills, and processes are designed for rapid MVP development with AI Agents. Kimi Code CLI with `kimi-k2.5` handles Phases 0-4.2 (concept through template selection). GLM-5 handles Phases 4.3-7.1 (template integration through completion).*
+
+**Entry Points:**
+- Start with `AGENTS.md` (meta-folder development) or `AGENTS_Reserve.md` (production)
+- For GLM-5 phases: Use `CLAUDE.md` or `CLAUDE_Reserve.md`

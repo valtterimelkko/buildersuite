@@ -6,11 +6,11 @@ Buildersuite is designed especially for non-technical founders who want to build
 
 This repository contains **three variations** of the same core framework, designed for different AI tooling preferences and budgets:
 
-| Variation | Primary AI Tools | Best For | Cost Profile |
+| Variation | Primary AI Tools | Best For | Budget Requirements |
 |-----------|------------------|----------|--------------|
-| **buildersuite-claude** | Claude Code only | Users who want the premium experience with best-in-class creative and technical capabilities | Higher |
-| **buildersuite-hybrid** | Claude Code + Kimi Code CLI | Users who want Claude's creative excellence + Kimi's implementation efficiency | Medium |
-| **buildersuite-glm** | Kimi Code CLI + GLM-5 | Budget-conscious users who want excellent software engineering at lower cost | Lower |
+| **buildersuite-claude** | Claude Code only | Users who want the premium experience with best-in-class creative and technical capabilities | Higher plan (~$50-100/month Team or Enterprise) or pay-as-you-go API credits. Pro plan (~$20/month) would take significantly longer to build. |
+| **buildersuite-hybrid** | Claude Code + Kimi Code CLI | Users who want Claude's creative excellence + Kimi's implementation efficiency | Medium budget (~$30-60/month). Works well with Claude Pro + Kimi. |
+| **buildersuite-glm** | Kimi Code CLI + GLM-5 | Budget-conscious users who want excellent software engineering at lower cost | Lower budget (~$15-30/month). Works efficiently with free/lower-cost API access. |
 
 ---
 
@@ -325,10 +325,14 @@ Buildersuite comes in three versions to fit different budgets and preferences. A
 - ✅ Most mature implementation
 
 **Cons**:
-- ❌ Higher monthly cost (~$50-100)
-- ❌ Requires Claude Code subscription
+- ❌ Higher budget required: Team/Enterprise plan (~$50-100/month) or pay-as-you-go API credits recommended. Pro plan (~$20/month) would take significantly longer due to rate limits.
+- ❌ Requires Claude Code already installed and authenticated
 
-**Start here**: Open `CLAUDE.md` or `CLAUDE_Reserve.md` in Claude Code
+**Tool Recommendations**: 
+- **Claude Code CLI** (recommended) or **Claude Code IDE Extension** - both provide the most effective experience for this project
+- ⚠️ **Claude Code Cloud is NOT recommended** - it wouldn't fully work with this project structure
+
+**Start here**: Open `CLAUDE.md` in Claude Code
 
 ---
 
@@ -350,13 +354,17 @@ Buildersuite comes in three versions to fit different budgets and preferences. A
 - ✅ Same high-quality outputs
 
 **Cons**:
-- ❌ Need both Claude Code and Kimi Code CLI
+- ❌ Need both Claude Code and Kimi Code CLI installed and authenticated
 - ❌ Switch tools at Phase 1.5
 - ❌ Slightly more complex setup
 
+**Tool Recommendations**:
+- **Claude Code**: Claude Code CLI or IDE Extension (Cloud version not recommended)
+- **Kimi Code**: Kimi Code CLI or Kimi Code Extension (best options even without Kimi Coding Plan, as Kimi K-2.5 is available via various API providers including Moonshot's own API)
+
 **Start here**: 
-- Begin with `CLAUDE_Reserve.md` in Claude Code (Phases 0-1.5)
-- Continue with `KIMI_Reserve.md` in Kimi Code CLI (Phases 2-7)
+- Begin with `CLAUDE.md` in Claude Code (Phases 0-1.5)
+- Continue with `KIMI.md` in Kimi Code CLI (Phases 2-7)
 
 ---
 
@@ -376,30 +384,64 @@ Buildersuite comes in three versions to fit different budgets and preferences. A
 - ✅ Most affordable option (~$15-30/month)
 - ✅ GLM-5 excels at software engineering
 - ✅ Same deliverables as other versions
+- ✅ Works efficiently with lower budget and free/lower-cost API access
 
 **Cons**:
 - ❌ Two tools required + GLM-5 harness setup
 - ❌ Tool switch at Phase 4.3
 - ❌ More complex toolchain
 
-**GLM-5 harness options**: Roo Code, OpenCode, Kilo Code, Kimi Code CLI, Cline
+**Tool Recommendations**:
+- **Kimi Code**: Kimi Code CLI or Kimi Code Extension (even without Kimi Coding Plan, as K-2.5 available via various APIs including Moonshot's API)
+- **GLM-5 Harnesses**: Choose any of these excellent options:
+  - Roo Code
+  - Kilo Code
+  - Cline
+  - OpenCode
+  - Claude Code with GLM-5 (excellent harness for GLM)
+- **Note**: GLM has a Coding Plan, but GLM-5 can also be used via various APIs including their own or z.ai API
 
 **Start here**:
-- Begin with `AGENTS_Reserve.md` in Kimi Code CLI (Phases 0-4.2)
-- Continue with `CLAUDE_Reserve.md` using GLM-5 (Phases 4.3-7.1)
+- Begin with `AGENTS.md` in Kimi Code CLI (Phases 0-4.2)
+- Continue with `CLAUDE.md` using GLM-5 (Phases 4.3-7.1)
 
 ---
 
 ## Quick Start
 
-### What You'll Need Before Starting
+### Prerequisites
 
-1. **A computer** with Git, Node.js (v18+), and Python (v3.9+)
-2. **Your SaaS idea** written down in a document
-3. **API accounts** for required services (we'll help you get these)
-4. **2-3 hours** for your first session
+Before you begin, ensure you have:
 
-Don't worry if you don't have the API accounts yet—Phase 0 will guide you through setting them up.
+1. **Development Environment**:
+   - A computer with Git, Node.js (v18+), and Python (v3.9+)
+   - 2-3 hours for your first session
+
+2. **AI Tool Setup** (depending on your chosen variation):
+
+   **For buildersuite-claude:**
+   - ✅ **Claude Code already installed and authenticated** (CLI or IDE Extension version)
+   - Claude Code CLI or IDE Extension is the most effective tool for this project
+   - ⚠️ Claude Code Cloud is NOT recommended as it wouldn't fully work with this project structure
+   - Higher Claude plan (Team/Enterprise ~$50-100/month) or pay-as-you-go API credits recommended
+   - Pro plan (~$20/month) would work but take significantly longer due to rate limits
+
+   **For buildersuite-hybrid:**
+   - ✅ **Claude Code already installed and authenticated** (CLI or IDE Extension)
+   - ✅ **Kimi Code CLI or Extension installed** (even if you don't have Kimi Coding Plan, as Kimi K-2.5 is available via various API providers including Moonshot's own API)
+   
+   **For buildersuite-glm:**
+   - ✅ **Kimi Code CLI or Extension** for early phases (even without Kimi Coding Plan)
+   - ✅ **GLM-5 Harness** of your choice: Roo Code, Kilo Code, Cline, OpenCode, or Claude Code with GLM-5
+   - Note: GLM-5 can be used via various APIs including their own or z.ai API
+
+3. **Your SaaS Idea**:
+   - Written down in a document
+   - Clear understanding of what problem you're solving
+
+4. **API Accounts** (Phase 0 will guide you through setting these up):
+   - Required services for development and deployment
+   - Don't worry if you don't have these yet—the AI will help you get them
 
 ### Step 1: Pick Your Version
 
@@ -437,21 +479,21 @@ cp .env.example .env
 **For buildersuite-claude:**
 ```bash
 # Open the starting document in Claude Code
-claude CLAUDE_Reserve.md
+claude CLAUDE.md
 ```
 
 **For buildersuite-hybrid:**
 ```bash
 # Start with Claude Code for creative phases
-claude CLAUDE_Reserve.md
-# (After Phase 1.5, you'll switch to Kimi Code CLI)
+claude CLAUDE.md
+# (After Phase 1.5, you'll switch to Kimi Code CLI with KIMI.md)
 ```
 
 **For buildersuite-glm:**
 ```bash
 # Start with Kimi Code CLI
-kimi AGENTS_Reserve.md
-# (After Phase 4.2, you'll switch to GLM-5)
+kimi AGENTS.md
+# (After Phase 4.2, you'll switch to GLM-5 with CLAUDE.md)
 ```
 
 The AI will guide you through each phase. Your main job is to:

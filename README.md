@@ -447,12 +447,12 @@ Don't worry if this sounds technical—getting API keys is like creating account
 **How to get it** (5 minutes):
 1. Go to [supabase.com](https://supabase.com) and sign up
 2. Click "New Project" and choose a name
-3. Go to Project Settings → API and copy:
-   - Project URL
-   - `anon` key (public key)
-   - `service_role` key (secret key - keep this safe!)
-4. Go to [supabase.com/dashboard/account/tokens](https://supabase.com/dashboard/account/tokens) to get your access token
-5. Note your Organization ID from the URL when viewing your organization
+3. Go to Project Settings → API and copy these values:
+   - Project URL (for `SUPABASE_URL`)
+   - `anon` / `public` key (for `SUPABASE_ANON_KEY`)
+   - `service_role` key (for `SUPABASE_SERVICE_ROLE_KEY` - keep this secret!)
+4. Go to [supabase.com/dashboard/account/tokens](https://supabase.com/dashboard/account/tokens) to get your access token (for `SUPABASE_ACCESS_TOKEN`)
+5. Note your Organization ID from the URL when viewing your organization (for `SUPABASE_ORG_ID`)
 
 **Why you need it**: Every SaaS needs a database. Supabase gives you a professional database with security built-in.
 

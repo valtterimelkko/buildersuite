@@ -848,7 +848,7 @@ You get a complete go-to-market foundation:
 5. **Brand Voice Guidelines**: Consistency rules for all your messaging
 6. **6-Month Content Calendar**: SEO content strategy with topics prioritized
 
-This is work that would typically cost $10,000-$25,000 from a marketing agency.
+This represents the type of work that marketing agencies typically charge thousands of dollars for.
 
 ---
 

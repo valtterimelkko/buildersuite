@@ -10,7 +10,7 @@ This repository contains **three variations** of the same core framework, design
 
 | Variation | Primary AI Tools | Best For | Budget Requirements |
 |-----------|------------------|----------|--------------|
-| **buildersuite-claude** | Claude Code only | Users who want the premium experience with best-in-class creative and technical capabilities | Higher plan (~$50-100/month Team or Enterprise) or pay-as-you-go API credits. Pro plan (~$20/month) would take significantly longer to build. |
+| **buildersuite-claude** | Claude Code only | Users who want the premium experience with best-in-class creative and technical capabilities | Higher plan (~$50-200/month Max Plans) or pay-as-you-go API credits. With Pro plan (~$20/month) would take significantly longer to build due to usage quotas. |
 | **buildersuite-hybrid** | Claude Code + Kimi Code CLI | Users who want Claude's creative excellence + Kimi's implementation efficiency | Medium budget (~$30-60/month). Works well with Claude Pro + Kimi. |
 | **buildersuite-glm** | Kimi Code CLI + GLM-5 | Budget-conscious users who want excellent software engineering at lower cost | Lower budget (~$15-30/month). Works efficiently with free/lower-cost API access - or - the best value I find (and then don't have to worry about token usage, there are plenty of them) are the [Kimi Code Subscription](https://www.kimi.com/code/en) and the [GLM Coding Plan](https://z.ai/subscribe) - no affiliation |
 
